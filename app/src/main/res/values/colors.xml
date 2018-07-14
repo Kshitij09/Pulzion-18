@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#0E1D32</color>
+    <color name="colorPrimaryDark">#00000b</color>
+    <color name="colorAccent">@color/cyan</color>
+
+    <color name="pulzion_green">#1ED583</color>
+    <color name="dark_terra_cotta">#D1495B</color>
+    <color name="cyan">#01BAEF</color>
+    <color name="yellow_red">#EDAE49</color>
+    <color name="persian_green">#05A8AA</color>
+</resources>
