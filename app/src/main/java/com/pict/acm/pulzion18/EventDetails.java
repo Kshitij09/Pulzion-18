@@ -3,7 +3,6 @@ package com.pict.acm.pulzion18;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.widget.ImageView;
 
 public class EventDetails extends AppCompatActivity {
@@ -19,8 +18,5 @@ public class EventDetails extends AppCompatActivity {
 
 
         ListInitializer initializer = ListInitializer.getInstance();
-        Toolbar toolbar = findViewById(R.id.AppBar);
-        setSupportActionBar(toolbar);
-        setTitle(initializer.eventEntries.get(position).eventName);
     }
 }

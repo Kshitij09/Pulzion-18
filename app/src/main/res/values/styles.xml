@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+    <style name="Theme.Pulzion18" parent="Theme.AppCompat.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -10,4 +10,11 @@
         <item name="android:windowActivityTransitions">true</item>
     </style>
 
+    <style name="Widget.Pulzion18.Cardview" parent="Widget.MaterialComponents.CardView">
+        <item name="android:backgroundTint">@color/card_color</item>
+        <item name="cardCornerRadius">8dp</item>
+        <item name="cardElevation">16dp</item>
+        <item name="android:layout_marginStart">16dp</item>
+        <item name="android:layout_marginEnd">16dp</item>
+    </style>
 </resources>
