@@ -5,18 +5,20 @@
     android:layout_margin="10dp"
     android:backgroundTint="@android:color/transparent"
     android:clickable="true"
-    android:focusable="true">
+    android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackground">
 
     <RelativeLayout
         android:background="@drawable/card_edge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/event_logo"
             android:layout_width="188dp"
             android:layout_height="128dp"
             android:layout_centerHorizontal="true"
+            android:transitionName="eventLogo"
             android:scaleType="fitCenter"
             android:src="@drawable/pasc" />
 

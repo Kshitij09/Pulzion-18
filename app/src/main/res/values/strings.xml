@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Pulzion 18</string>
+    <string name="event_description">Event Description</string>
 </resources>
