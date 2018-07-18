@@ -20,3 +20,5 @@ public class EventDetails extends AppCompatActivity {
         ListInitializer initializer = ListInitializer.getInstance();
     }
 }
+
+//Test Commit
