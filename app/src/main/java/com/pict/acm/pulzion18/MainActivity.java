@@ -71,4 +71,5 @@ public class MainActivity extends AppCompatActivity implements EventsAdapter.OnI
         startActivity(detailsActivity, optionsCompat.toBundle());
     }
 
+    //test comment
 }
