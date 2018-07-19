@@ -2,4 +2,6 @@
     <string name="app_name">Pulzion 18</string>
     <string name="event_description">Event Description</string>
     <string name="event_name">Event Name</string>
+    <string name="rules_and_regulations">Rules and regulations</string>
+    <string name="teams_distribution">Team distribution</string>
 </resources>

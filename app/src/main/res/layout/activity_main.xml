@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:clipChildren="false"
     android:clipToPadding="false"
-    tools:context=".MainActivity">
+    tools:context=".EventActivity">
 
     <LinearLayout
         android:id="@+id/backdrop"
