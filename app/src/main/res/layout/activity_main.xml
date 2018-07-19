@@ -4,8 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:clipChildren="false"
+    android:clipToPadding="false"
     tools:context=".MainActivity">
 
+    <LinearLayout
+        android:id="@+id/backdrop"
+        style="@style/Widget.Shrine.Backdrop"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingTop="88dp"
+        android:visibility="invisible">
+
+        <include layout="@layout/pulzion_backdrop" />
+    </LinearLayout>
     <android.support.v7.widget.RecyclerView
         android:id="@+id/event_list"
         android:layout_width="match_parent"
@@ -21,19 +35,23 @@
 
     <android.support.design.bottomappbar.BottomAppBar
         android:id="@+id/bar"
-        style="@style/Widget.MaterialComponents.BottomAppBar.Colored"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
+        android:layout_height="?attr/actionBarSize"
         android:layout_gravity="bottom"
-        android:backgroundTint="@color/colorPrimary"
-        app:fabAlignmentMode="end"
-        app:navigationIcon="@drawable/ic_menu" />
+        app:fabAlignmentMode="end">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/app_bar"
+            style="@style/Widget.Shrine.Toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:navigationIcon="@drawable/ic_menu" />
+    </android.support.design.bottomappbar.BottomAppBar>
 
     <android.support.design.widget.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_dummy"
         app:elevation="8dp"
-        app:layout_anchor="@id/bar" />
-
+        app:layout_anchor="@id/app_bar" />
 </android.support.design.widget.CoordinatorLayout>

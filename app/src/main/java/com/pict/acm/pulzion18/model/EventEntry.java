@@ -1,12 +1,13 @@
 package com.pict.acm.pulzion18.model;
 
-import android.graphics.drawable.Drawable;
-
 public class EventEntry {
     public String eventName;
-    public Drawable eventLogo;
+    public int eventLogo;
+    public int color;
 
-    public EventEntry(String eventName) {
+    public EventEntry(String eventName, int eventLogo, int color) {
         this.eventName = eventName;
+        this.eventLogo = eventLogo;
+        this.color = color;
     }
 }

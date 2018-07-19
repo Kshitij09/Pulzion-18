@@ -1,100 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".EventDetails">
+    android:layout_height="match_parent">
 
-    <android.support.constraint.ConstraintLayout
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <ImageView
-            android:id="@+id/event_logo"
-            android:layout_width="368dp"
-            android:layout_height="184dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:transitionName="eventLogo" />
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:context=".EventDetails">
 
 
-        <android.support.design.card.MaterialCardView
-            android:id="@+id/card1"
-            style="@style/Widget.Pulzion18.Cardview"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            app:layout_constraintBottom_toTopOf="@+id/card2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/event_logo"
-            app:layout_constraintVertical_chainStyle="packed">
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="12dp">
 
-            <android.support.constraint.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="12dp">
+            <ImageView
+                android:id="@+id/event_logo"
+                android:layout_width="0dp"
+                android:layout_height="184dp"
+                android:scaleType="fitCenter"
+                android:transitionName="eventLogo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/event_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/event_description"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+            <TextView
+                android:id="@+id/event_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/event_name"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Display2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/event_logo" />
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v4.widget.NestedScrollView>
 
-                <TextView
-                    android:id="@+id/event_description"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
-                    android:textAlignment="textStart"
-                    android:textSize="16sp"
-                    app:layout_constraintTop_toBottomOf="@+id/event_title" />
+    <android.support.design.bottomappbar.BottomAppBar
+        android:id="@+id/bar"
+        style="@style/Widget.MaterialComponents.BottomAppBar.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_gravity="bottom"
+        android:backgroundTint="@color/colorPrimary"
+        app:fabAlignmentMode="end"
+        app:navigationIcon="@drawable/ic_menu" />
 
-            </android.support.constraint.ConstraintLayout>
-        </android.support.design.card.MaterialCardView>
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_dummy"
+        app:elevation="8dp"
+        app:layout_anchor="@id/bar" />
 
-        <android.support.design.card.MaterialCardView
-            android:id="@+id/card2"
-            style="@style/Widget.Pulzion18.Cardview"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/card1">
-
-            <android.support.constraint.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="12dp">
-
-                <TextView
-                    android:id="@+id/rules_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/event_description"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
-
-                <TextView
-                    android:id="@+id/rules_description"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
-                    android:textAlignment="textStart"
-                    android:textSize="16sp"
-                    app:layout_constraintTop_toBottomOf="@+id/rules_title" />
-
-            </android.support.constraint.ConstraintLayout>
-
-        </android.support.design.card.MaterialCardView>
-    </android.support.constraint.ConstraintLayout>
-</android.support.v4.widget.NestedScrollView>
+</android.support.design.widget.CoordinatorLayout>
 

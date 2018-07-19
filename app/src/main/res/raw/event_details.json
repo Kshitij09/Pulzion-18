@@ -1,0 +1,18 @@
+[
+  {
+    "eventName": "Just Coding",
+    "eventDescription": "Just Coding is a coding competition where the participants will have to write correct and efficient codes for the given set of problem statements. The competition will be hosted on HackerRank.",
+    "rules": "Both the groups, FE-SE and TE-BE, will be given maximum 2 hours to complete.Permitted languages will be C, C++ and Java.Participants are requested to have a HackerRank handle before appearing for the contest.Any offline IDE can be used but use of any online IDE other than HackerRank is prohibited.",
+    "teams": "FE-SE (Junior Team): Teams of 2.TE-BE (Senior Team): Teams of 2",
+    "Fees": "Rs.100 per team (Juniors/Seniors).",
+    "contact": "Nilakshi: +91-8087558503"
+  },
+  {
+    "eventName": "Bug Off",
+    "eventDescription": "Bug Off is a one of its kind coding competition where the participants are expected to remove the bugs from the given set of codes and achieve the desired output within the time limit. The participant (Team/Individual) with maximum number of error-free codes wins the contest.",
+    "rules": "Both the groups, FE-SE and TE-BE, will be given maximum 2 hours to complete.Permitted languages will be C, C++ and Java.Participants are requested to have a HackerRank handle before appearing for the contest.Any offline IDE can be used but use of any online IDE other than HackerRank is prohibited."
+    "teams": "FE-SE (Junior Team): Teams of 2.TE-BE (Senior Team): Teams of 2",
+    "Fees": "Rs.100 per team (Juniors/Seniors).",
+    "contact": "Nilakshi: +91-8087558503"
+  }
+]

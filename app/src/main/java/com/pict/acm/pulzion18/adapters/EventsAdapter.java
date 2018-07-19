@@ -28,13 +28,6 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.EventViewH
     @Override
     public EventViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.event_list_item, parent, false);
-        /*final EventViewHolder eventViewHolder = new EventViewHolder(view);
-        eventViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-               listener.onItemClick(eventViewHolder.eventLogo);
-            }
-        });*/
         return new EventViewHolder(view);
     }
 
@@ -42,6 +35,11 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.EventViewH
     public void onBindViewHolder(@NonNull EventViewHolder holder, int position) {
         EventEntry entry = eventList.get(position);
         holder.eventTitle.setText(entry.eventName);
+        holder.eventLogo.setImageDrawable(context.getDrawable(entry.eventLogo));
+        holder.eventTitle.setTextColor(context.getResources().getColor(entry.color));
+        /*Drawable edge = context.getResources().getDrawable(R.drawable.card_edge,context.getTheme());
+        edge.setTint(context.getResources().getColor(entry.color));*/
+        //holder.layout.setBackground(edge);
         holder.bind(position, listener);
     }
 
@@ -60,7 +58,8 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.EventViewH
 
     class EventViewHolder extends RecyclerView.ViewHolder {
         TextView eventTitle;
-        public ImageView eventLogo;
+        ImageView eventLogo;
+        //RelativeLayout layout;
         View itemView;
 
         EventViewHolder(@NonNull View itemView) {
@@ -68,6 +67,7 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.EventViewH
             this.itemView = itemView;
             eventLogo = itemView.findViewById(R.id.event_logo);
             eventTitle = itemView.findViewById(R.id.event_title);
+            //layout = itemView.findViewById(R.id.layout);
         }
 
         public void bind(final int position, final OnItemClickListener listener) {

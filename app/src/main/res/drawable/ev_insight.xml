@@ -3,6 +3,7 @@
     android:width="710dp"
     android:height="463.2dp"
     android:viewportHeight="463.2"
+    android:tint="@color/cyan"
     android:viewportWidth="710">
 
     <group>

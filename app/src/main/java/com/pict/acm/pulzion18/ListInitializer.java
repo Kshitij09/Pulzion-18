@@ -13,16 +13,16 @@ public class ListInitializer {
 
     private ListInitializer() {
         eventEntries = new ArrayList<>();
-        eventEntries.add(new EventEntry("Bug Off"));
-        eventEntries.add(new EventEntry("Just Coding"));
-        eventEntries.add(new EventEntry("Code Buddy"));
-        eventEntries.add(new EventEntry("Cash N Code"));
-        eventEntries.add(new EventEntry("Electro Quest"));
-        eventEntries.add(new EventEntry("Dextrous"));
-        eventEntries.add(new EventEntry("Fandom Quiz"));
-        eventEntries.add(new EventEntry("Insight"));
-        eventEntries.add(new EventEntry("Cerebro"));
-        eventEntries.add(new EventEntry("Quiz to Bid"));
+        eventEntries.add(new EventEntry("Bug Off", R.drawable.ev_bugoff, R.color.dark_terra_cotta));
+        eventEntries.add(new EventEntry("Just Coding", R.drawable.ev_justcoding, R.color.cyan));
+        eventEntries.add(new EventEntry("Code Buddy", R.drawable.ev_codebuddy, R.color.pulzion_green));
+        eventEntries.add(new EventEntry("Cash N Code", R.drawable.ev_cashncode, R.color.yellow_red));
+        eventEntries.add(new EventEntry("Electro Quest", R.drawable.ev_electroquest, R.color.persian_green));
+        eventEntries.add(new EventEntry("Dextrous", R.drawable.ev_dextrous, R.color.dark_terra_cotta));
+        eventEntries.add(new EventEntry("Fandom Quiz", R.drawable.ev_fandomquiz, R.color.persian_green));
+        eventEntries.add(new EventEntry("Insight", R.drawable.ev_insight, R.color.cyan));
+        eventEntries.add(new EventEntry("Cerebro", R.drawable.ev_cerebro, R.color.yellow_red));
+        eventEntries.add(new EventEntry("Quiz to Bid", R.drawable.ev_quiz_to_bid, R.color.pulzion_green));
     }
 
     public static ListInitializer getInstance() {

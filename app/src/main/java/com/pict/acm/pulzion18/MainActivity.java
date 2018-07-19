@@ -7,7 +7,9 @@ import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.transition.Explode;
+import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.ImageView;
 
 import com.pict.acm.pulzion18.adapters.EventsAdapter;
@@ -18,6 +20,16 @@ public class MainActivity extends AppCompatActivity implements EventsAdapter.OnI
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Toolbar bar = findViewById(R.id.app_bar);
+        setSupportActionBar(bar);
+        bar.setNavigationOnClickListener(new NavigationIconClickListener(
+                MainActivity.this,
+                findViewById(R.id.event_list),
+                findViewById(R.id.backdrop),
+                new AccelerateDecelerateInterpolator(),
+                getResources().getDrawable(R.drawable.ic_menu),
+                getResources().getDrawable(R.drawable.close_menu)));
 
         eventsRecycler = findViewById(R.id.event_list);
         eventsRecycler.setHasFixedSize(true);
@@ -58,4 +70,5 @@ public class MainActivity extends AppCompatActivity implements EventsAdapter.OnI
         ActivityOptionsCompat optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(MainActivity.this, view, ViewCompat.getTransitionName(view));
         startActivity(detailsActivity, optionsCompat.toBundle());
     }
+
 }

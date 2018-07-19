@@ -9,6 +9,7 @@
     android:foreground="?android:attr/selectableItemBackground">
 
     <RelativeLayout
+        android:id="@+id/layout"
         android:background="@drawable/card_edge"
         android:layout_width="match_parent"
         android:layout_height="match_parent">

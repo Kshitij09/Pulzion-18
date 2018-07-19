@@ -8,6 +8,7 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowBackground">@color/colorPrimaryDark</item>
         <item name="android:windowActivityTransitions">true</item>
+        <item name="android:textColorPrimary">@android:color/white</item>
     </style>
 
     <style name="Widget.Pulzion18.Cardview" parent="Widget.MaterialComponents.CardView">
@@ -16,5 +17,19 @@
         <item name="cardElevation">16dp</item>
         <item name="android:layout_marginStart">16dp</item>
         <item name="android:layout_marginEnd">16dp</item>
+    </style>
+
+    <style name="Widget.Shrine.Button.TextButton" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+    </style>
+
+    <style name="Widget.Shrine.Backdrop" parent="">
+        <item name="android:background">?attr/colorPrimary</item>
+    </style>
+
+    <style name="Widget.Shrine.Toolbar" parent="Widget.AppCompat.Toolbar">
+        <item name="android:background">?attr/colorPrimary</item>
+        <item name="android:theme">@style/Theme.Pulzion18</item>
+        <item name="popupTheme">@style/ThemeOverlay.AppCompat</item>
     </style>
 </resources>
