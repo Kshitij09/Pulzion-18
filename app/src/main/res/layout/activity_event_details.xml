@@ -9,6 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
+        android:layout_marginBottom="?actionBarSize"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:context=".EventDetails">
 
@@ -115,8 +116,9 @@
         android:id="@+id/bar"
         style="@style/Widget.MaterialComponents.BottomAppBar.Colored"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
+        android:layout_height="?actionBarSize"
         android:layout_gravity="bottom"
+        android:elevation="8dp"
         android:backgroundTint="@color/colorPrimary"
         app:fabAlignmentMode="end"
         app:navigationIcon="@drawable/ic_menu" />

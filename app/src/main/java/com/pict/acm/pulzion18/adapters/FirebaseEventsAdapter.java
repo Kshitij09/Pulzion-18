@@ -16,12 +16,15 @@ import com.pict.acm.pulzion18.ListInitializer;
 import com.pict.acm.pulzion18.R;
 import com.pict.acm.pulzion18.model.EventEntry;
 import com.pict.acm.pulzion18.model.EventSnapshot;
+import com.wang.avi.AVLoadingIndicatorView;
 
 public class FirebaseEventsAdapter extends FirebaseRecyclerAdapter<EventSnapshot, FirebaseEventsAdapter.MainEventHolder> {
     private Context context;
     private OnItemClickListener listener;
     private ListInitializer initializer;
     private Resources resources;
+    private AVLoadingIndicatorView indicator;
+    private RecyclerView recyclerView;
 
     /**
      * Initialize a {@link RecyclerView.Adapter} that listens to a Firebase query. See
@@ -29,11 +32,20 @@ public class FirebaseEventsAdapter extends FirebaseRecyclerAdapter<EventSnapshot
      *
      * @param options
      */
-    public FirebaseEventsAdapter(Context context, @NonNull FirebaseRecyclerOptions<EventSnapshot> options) {
+    public FirebaseEventsAdapter(Context context, @NonNull FirebaseRecyclerOptions<EventSnapshot> options, AVLoadingIndicatorView indicator, RecyclerView recyclerView) {
         super(options);
         this.context = context;
         resources = context.getResources();
+        this.indicator = indicator;
+        this.recyclerView = recyclerView;
         initializer = ListInitializer.getInstance();
+    }
+
+    @Override
+    public void onDataChanged() {
+        super.onDataChanged();
+        indicator.hide();
+        recyclerView.setVisibility(View.VISIBLE);
     }
 
     @Override

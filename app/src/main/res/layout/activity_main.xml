@@ -8,6 +8,16 @@
     android:clipToPadding="false"
     tools:context=".EventActivity">
 
+    <com.wang.avi.AVLoadingIndicatorView
+        android:id="@+id/indicator"
+        style="@style/AVLoadingIndicatorView.Large"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="visible"
+        app:indicatorColor="@color/colorAccent"
+        app:indicatorName="BallScaleRippleMultipleIndicator" />
+
     <LinearLayout
         android:id="@+id/backdrop"
         style="@style/Widget.Shrine.Backdrop"
@@ -20,6 +30,7 @@
 
         <include layout="@layout/pulzion_backdrop" />
     </LinearLayout>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/event_list"
         android:layout_width="match_parent"
@@ -30,6 +41,7 @@
         android:scrollbarStyle="insideOverlay"
         android:scrollbars="vertical"
         android:layout_marginBottom="56dp"
+        android:visibility="invisible"
         app:layoutManager="android.support.v7.widget.GridLayoutManager"
         app:spanCount="3" />
 
@@ -51,7 +63,13 @@
     <android.support.design.widget.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_dummy"
+        android:src="@drawable/ic_filter"
         app:elevation="8dp"
         app:layout_anchor="@id/app_bar" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </View>
 </android.support.design.widget.CoordinatorLayout>
