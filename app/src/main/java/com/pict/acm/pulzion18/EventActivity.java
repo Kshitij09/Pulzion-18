@@ -49,7 +49,7 @@ public class EventActivity extends AppCompatActivity implements FirebaseEventsAd
 
         setupRecyclerView();
 
-        Query query = rootRef.child("events").child("technical");
+        Query query = rootRef.child("events");
         FirebaseRecyclerOptions<EventSnapshot> options = new FirebaseRecyclerOptions.Builder<EventSnapshot>()
                 .setQuery(query, EventSnapshot.class)
                 .build();

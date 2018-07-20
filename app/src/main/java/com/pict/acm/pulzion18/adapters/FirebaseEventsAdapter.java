@@ -1,6 +1,7 @@
 package com.pict.acm.pulzion18.adapters;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,12 +12,16 @@ import android.widget.TextView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.pict.acm.pulzion18.ListInitializer;
 import com.pict.acm.pulzion18.R;
+import com.pict.acm.pulzion18.model.EventEntry;
 import com.pict.acm.pulzion18.model.EventSnapshot;
 
 public class FirebaseEventsAdapter extends FirebaseRecyclerAdapter<EventSnapshot, FirebaseEventsAdapter.MainEventHolder> {
     private Context context;
     private OnItemClickListener listener;
+    private ListInitializer initializer;
+    private Resources resources;
 
     /**
      * Initialize a {@link RecyclerView.Adapter} that listens to a Firebase query. See
@@ -27,12 +32,18 @@ public class FirebaseEventsAdapter extends FirebaseRecyclerAdapter<EventSnapshot
     public FirebaseEventsAdapter(Context context, @NonNull FirebaseRecyclerOptions<EventSnapshot> options) {
         super(options);
         this.context = context;
+        resources = context.getResources();
+        initializer = ListInitializer.getInstance();
     }
 
     @Override
     protected void onBindViewHolder(@NonNull MainEventHolder holder, int position, @NonNull EventSnapshot model) {
         holder.name.setText(model.getName());
-        holder.eventLogo.setImageDrawable(context.getResources().getDrawable(R.drawable.pasc, context.getTheme()));
+        EventEntry entry = initializer.eventsMap.get(model.getName());
+        if (entry != null) {
+            holder.eventLogo.setImageDrawable(resources.getDrawable(entry.eventLogo, context.getTheme()));
+            holder.name.setTextColor(resources.getColor(entry.color));
+        }
         holder.bind(model.getName(), listener);
     }
 
