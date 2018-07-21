@@ -15,15 +15,18 @@ import android.widget.ImageView;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.pict.acm.pulzion18.adapters.FirebaseEventsAdapter;
 import com.pict.acm.pulzion18.model.EventSnapshot;
+import com.wang.avi.AVLoadingIndicatorView;
+
+import static com.pict.acm.pulzion18.Constants.PULZION.EVENTS;
 
 public class EventActivity extends AppCompatActivity implements FirebaseEventsAdapter.OnItemClickListener {
     RecyclerView eventsRecycler;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference rootRef = database.getReference();
     FirebaseEventsAdapter adapter;
+    AVLoadingIndicatorView indicator;
 
     @Override
     protected void onStart() {
@@ -45,15 +48,17 @@ public class EventActivity extends AppCompatActivity implements FirebaseEventsAd
         setupNavigationbar();
 
         eventsRecycler = findViewById(R.id.event_list);
+        indicator = findViewById(R.id.indicator);
         eventsRecycler.setHasFixedSize(true);
 
         setupRecyclerView();
 
-        Query query = rootRef.child("events").child("technical");
+        DatabaseReference query = rootRef.child(EVENTS);
+        query.keepSynced(true);
         FirebaseRecyclerOptions<EventSnapshot> options = new FirebaseRecyclerOptions.Builder<EventSnapshot>()
                 .setQuery(query, EventSnapshot.class)
                 .build();
-        adapter = new FirebaseEventsAdapter(EventActivity.this, options);
+        adapter = new FirebaseEventsAdapter(EventActivity.this, options, indicator, eventsRecycler);
         adapter.setOnItemClickListener(this);
         eventsRecycler.setAdapter(adapter);
     }
