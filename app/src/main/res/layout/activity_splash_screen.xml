@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.SplashScreen"
+    android:background="@drawable/spacenew">
+
+
+    <ImageView
+        android:id="@+id/rocketImage"
+        android:layout_width="wrap_content"
+        android:layout_height="198dp"
+        android:contentDescription="@string/desc"
+        android:paddingBottom="10dp"
+        android:scaleX=".75"
+        android:scaleY=".75"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/rocket" />
+
+    <ImageView
+        android:id="@+id/pulzionImage"
+        android:layout_width="wrap_content"
+        android:layout_height="231dp"
+        android:alpha="0"
+        android:contentDescription="@string/desc"
+        android:scaleX="0.9"
+        android:scaleY="0.9"
+        app:layout_constraintBottom_toTopOf="@+id/rocketImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.079"
+        app:srcCompat="@drawable/pulzion" />
+
+</android.support.constraint.ConstraintLayout>

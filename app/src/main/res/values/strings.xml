@@ -4,4 +4,5 @@
     <string name="event_name">Event Name</string>
     <string name="rules_and_regulations">Rules and regulations</string>
     <string name="teams_distribution">Team distribution</string>
+    <string name="desc">Image</string>
 </resources>
