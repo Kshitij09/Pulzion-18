@@ -3,6 +3,7 @@ package com.pict.acm.pulzion18;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.bottomappbar.BottomAppBar;
+import android.support.design.button.MaterialButton;
 import android.support.design.chip.Chip;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityOptionsCompat;
@@ -41,6 +42,7 @@ public class EventActivity extends AppCompatActivity implements FirebaseEventsAd
     Boolean filterTechnical, filterNonTechnical;
     Query query;
     FirebaseRecyclerOptions<EventSnapshot> options;
+    MaterialButton btnSponsor;
 
     @Override
     protected void onStart() {
@@ -67,6 +69,13 @@ public class EventActivity extends AppCompatActivity implements FirebaseEventsAd
         indicator = findViewById(R.id.indicator);
         eventsRecycler.setHasFixedSize(true);
         btnFilter = findViewById(R.id.filter);
+        btnSponsor = findViewById(R.id.btn_sponsors);
+        btnSponsor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(EventActivity.this, SponsorsActivity.class));
+            }
+        });
 
         Intent intent = getIntent();
         filterTechnical = intent.getBooleanExtra(TECHNICAL, true);

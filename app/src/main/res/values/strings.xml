@@ -8,4 +8,8 @@
     <string name="technical">Technical</string>
     <string name="fees">Fees</string>
     <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
+    <string name="about_us">About Us</string>
+    <string name="sponsors">Sponsors</string>
+    <string name="events">Events</string>
+    <string name="login_signup">Login/Signup</string>
 </resources>

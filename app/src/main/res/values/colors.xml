@@ -12,4 +12,11 @@
     <color name="cyan">#01BAEF</color>
     <color name="yellow_red">#EDAE49</color>
     <color name="persian_green">#05A8AA</color>
+    <color name="red_purple">#380036</color>
+    <color name="white_smoke">#f7f7f2</color>
+    <color name="yellow_munsell">#f0c808</color>
+    <color name="flame">#e4572e</color>
+    <color name="rich_black">#050517</color>
+    <color name="mindaro">#ddfc74</color>
+    <color name="french_blue">#0072bb</color>
 </resources>

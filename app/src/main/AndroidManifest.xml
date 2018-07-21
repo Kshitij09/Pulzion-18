@@ -4,16 +4,16 @@
     package="com.pict.acm.pulzion18">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+
     <application
+        android:name=".Pulzion18"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:name=".Pulzion18"
-        tools:replace="android:theme"
-        android:theme="@style/Theme.Pulzion18">
+        android:theme="@style/Theme.Pulzion18"
+        tools:replace="android:theme">
         <activity android:name=".EventActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,21 +21,23 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".EventDetails"></activity>
+        <activity android:name=".EventDetails" />
 
         <service android:name=".fcm.MyFirebaseMessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-        <!--default icon for notification-->
+        <!-- default icon for notification -->
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
             android:resource="@drawable/pasc" />
-        <!--default color of notification-->
+        <!-- default color of notification -->
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/colorAccent" />
+
+        <activity android:name=".SponsorsActivity"></activity>
     </application>
 
 </manifest>
