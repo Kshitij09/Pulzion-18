@@ -19,6 +19,17 @@
             android:layout_height="match_parent"
             android:padding="12dp">
 
+            <TextView
+                android:id="@+id/txt_fees"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/fees"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/teams" />
+
             <ImageView
                 android:id="@+id/event_logo"
                 android:layout_width="0dp"
@@ -70,7 +81,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="16dp"
                 android:text="@string/rules_and_regulations"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
                 app:layout_constraintStart_toStartOf="parent"
@@ -81,7 +92,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="16dp"
                 android:text="@string/teams_distribution"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
                 app:layout_constraintStart_toStartOf="parent"
@@ -96,6 +107,7 @@
                 android:layout_marginTop="16dp"
                 android:text=""
                 android:textAlignment="textStart"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_rules" />
@@ -107,8 +119,20 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
                 android:text=""
+                android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_teams" />
+
+            <TextView
+                android:id="@+id/fees"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:text=""
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_fees" />
         </android.support.constraint.ConstraintLayout>
     </android.support.v4.widget.NestedScrollView>
 
@@ -120,13 +144,14 @@
         android:layout_gravity="bottom"
         android:elevation="8dp"
         android:backgroundTint="@color/colorPrimary"
-        app:fabAlignmentMode="end"
+        app:fabAlignmentMode="center"
         app:navigationIcon="@drawable/ic_menu" />
 
     <android.support.design.widget.FloatingActionButton
+        android:id="@+id/register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_dummy"
+        android:src="@drawable/ic_register"
         app:elevation="8dp"
         app:layout_anchor="@id/bar" />
 

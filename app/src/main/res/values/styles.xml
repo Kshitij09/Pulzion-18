@@ -39,4 +39,11 @@
         <item name="android:background">@drawable/bg_bottom_sheet</item>
         <item name="android:windowIsFloating">false</item>
     </style>
+
+    <style name="Widget.Pulzion18.Chip" parent="Widget.MaterialComponents.Chip.Filter">
+        <item name="android:padding">16dp</item>
+        <item name="chipStrokeWidth">1dp</item>
+        <item name="checkedIconEnabled">false</item>
+        <item name="rippleColor">@color/dark_terra_cotta</item>
+    </style>
 </resources>

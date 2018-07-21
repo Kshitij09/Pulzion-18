@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorAccent"
+    android:paddingBottom="64dp"
+    android:paddingTop="16dp"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+    tools:layout_editor_absoluteY="25dp">
+
+    <android.support.design.chip.Chip
+        android:id="@+id/ch_non_technical"
+        style="@style/Widget.Pulzion18.Chip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:checked="true"
+        android:onClick="FilterList"
+        android:text="@string/non_technical"
+        android:textColor="@android:color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/ch_technical"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.design.chip.Chip
+        android:id="@+id/ch_technical"
+        style="@style/Widget.Pulzion18.Chip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:checked="true"
+        android:onClick="FilterList"
+        android:text="@string/technical"
+        android:textColor="@android:color/black"
+        app:layout_constraintEnd_toStartOf="@+id/ch_non_technical"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</android.support.constraint.ConstraintLayout>

@@ -25,8 +25,13 @@ public class EventDetails extends AppCompatActivity {
     TextView eventTitle;
     TextView tagline;
     TextView description;
+    TextView txt_rules;
+    TextView txt_teams;
     TextView rules;
     TextView teams;
+    TextView txt_fees;
+    TextView fees;
+    //FloatingActionButton registerBtn;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference events = database.getReference().child(EVENTS);
     @Override
@@ -47,20 +52,31 @@ public class EventDetails extends AppCompatActivity {
         description = findViewById(R.id.description);
         rules = findViewById(R.id.rules);
         teams = findViewById(R.id.teams);
+        txt_rules = findViewById(R.id.txt_rules);
+        txt_teams = findViewById(R.id.txt_teams);
+        txt_fees = findViewById(R.id.txt_fees);
+        fees = findViewById(R.id.fees);
+        //registerBtn = findViewById(R.id.register);
 
         EventEntry entry = initializer.eventsMap.get(name);
         eventLogo.setImageDrawable(getResources().getDrawable(entry.eventLogo, getTheme()));
         eventTitle.setText(entry.eventName);
         eventTitle.setTextColor(getResources().getColor(entry.color));
         tagline.setTextColor(getResources().getColor(entry.color));
+        txt_teams.setTextColor(getResources().getColor(entry.color));
+        txt_rules.setTextColor(getResources().getColor(entry.color));
+        txt_fees.setTextColor(getResources().getColor(entry.color));
         rules.setSingleLine(false);
         teams.setSingleLine(false);
         Query record = events.orderByChild(NAME).equalTo(name);
-        record.addListenerForSingleValueEvent(new ValueEventListener() {
+        record.keepSynced(true);
+        record.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot snap : dataSnapshot.getChildren()) {
                     EventSnapshot eventSnapshot = snap.getValue(EventSnapshot.class);
+                    rules.setText("");
+                    teams.setText("");
                     Log.d("EventSnapshot", "onDataChange: " + dataSnapshot);
                     tagline.setText(eventSnapshot.getTagline());
                     description.setText(eventSnapshot.getDescription());
@@ -72,6 +88,7 @@ public class EventDetails extends AppCompatActivity {
                     for (int i = 0; i < ev_teams.length; i++) {
                         teams.append(ev_teams[i] + " \n");
                     }
+                    fees.setText(eventSnapshot.getFees());
                 }
             }
 
