@@ -12,4 +12,5 @@
     <string name="sponsors">Sponsors</string>
     <string name="events">Events</string>
     <string name="login_signup">Login/Signup</string>
+    <string name="desc">Image</string>
 </resources>
