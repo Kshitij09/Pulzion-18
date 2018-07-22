@@ -2,9 +2,9 @@ package com.pict.acm.pulzion18.activities;
 
 import android.content.Intent;
 import android.net.Uri;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.transition.Fade;
 import android.view.View;
 
 import com.pict.acm.pulzion18.EventActivity;
@@ -16,6 +16,7 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        getWindow().setExitTransition(new Fade());
     }
 
     public void Explore(View view){
