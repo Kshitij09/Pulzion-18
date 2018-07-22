@@ -2,32 +2,61 @@
 <merge xmlns:android="http://schemas.android.com/apk/res/android">
 
     <android.support.design.button.MaterialButton
+        android:id="@+id/btn_about"
         style="@style/Widget.Shrine.Button.TextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="About ACM" />
-
-    <android.support.design.button.MaterialButton
-        style="@style/Widget.Shrine.Button.TextButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Pulzion" />
-
-    <android.support.design.button.MaterialButton
-        style="@style/Widget.Shrine.Button.TextButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Login/Signup" />
+        android:text="@string/about_us" />
 
     <View
+        android:id="@+id/line_about_us"
+        android:layout_width="56dp"
+        android:layout_height="1dp"
+        android:layout_margin="16dp"
+        android:background="?android:attr/textColorPrimary"
+        android:visibility="gone" />
+
+    <android.support.design.button.MaterialButton
+        android:id="@+id/btn_sponsors"
+        style="@style/Widget.Shrine.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sponsors" />
+
+    <View
+        android:id="@+id/line_sponsors"
+        android:layout_width="56dp"
+        android:layout_height="1dp"
+        android:layout_margin="16dp"
+        android:background="?android:attr/textColorPrimary"
+        android:visibility="gone" />
+
+    <android.support.design.button.MaterialButton
+        android:id="@+id/btn_events"
+        style="@style/Widget.Shrine.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/events" />
+
+    <View
+        android:id="@+id/line_events"
         android:layout_width="56dp"
         android:layout_height="1dp"
         android:layout_margin="16dp"
         android:background="?android:attr/textColorPrimary" />
 
     <android.support.design.button.MaterialButton
+        android:id="@+id/btn_login"
         style="@style/Widget.Shrine.Button.TextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="My Events" />
+        android:text="@string/login_signup" />
+
+    <View
+        android:id="@+id/line_login"
+        android:layout_width="56dp"
+        android:layout_height="1dp"
+        android:layout_margin="16dp"
+        android:background="?android:attr/textColorPrimary"
+        android:visibility="gone" />
 </merge>

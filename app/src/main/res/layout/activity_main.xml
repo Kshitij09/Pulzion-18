@@ -47,29 +47,22 @@
 
     <android.support.design.bottomappbar.BottomAppBar
         android:id="@+id/bar"
+        style="@style/Widget.MaterialComponents.BottomAppBar.Colored"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
+        android:layout_height="?actionBarSize"
         android:layout_gravity="bottom"
-        app:fabAlignmentMode="end">
-
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/app_bar"
-            style="@style/Widget.Shrine.Toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:navigationIcon="@drawable/ic_menu" />
-    </android.support.design.bottomappbar.BottomAppBar>
+        android:backgroundTint="@color/colorPrimary"
+        android:elevation="8dp"
+        app:fabAlignmentMode="end"
+        app:navigationIcon="@drawable/ic_menu" />
 
     <android.support.design.widget.FloatingActionButton
+        android:id="@+id/filter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_filter"
         app:elevation="8dp"
-        app:layout_anchor="@id/app_bar" />
+        android:onClick="LaunchFilterBottomSheet"
+        app:layout_anchor="@id/bar" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-    </View>
 </android.support.design.widget.CoordinatorLayout>
