@@ -4,5 +4,12 @@
     <string name="event_name">Event Name</string>
     <string name="rules_and_regulations">Rules and regulations</string>
     <string name="teams_distribution">Team distribution</string>
-    <string name="desc">Image</string>
+    <string name="non_technical">Non Technical</string>
+    <string name="technical">Technical</string>
+    <string name="fees">Fees</string>
+    <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
+    <string name="about_us">About Us</string>
+    <string name="sponsors">Sponsors</string>
+    <string name="events">Events</string>
+    <string name="login_signup">Login/Signup</string>
 </resources>
