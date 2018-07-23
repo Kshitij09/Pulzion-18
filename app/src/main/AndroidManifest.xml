@@ -19,7 +19,8 @@
         </activity>
         <activity android:name=".EventDetails" />
         <activity android:name=".EventActivity" />
-        <activity android:name=".activities.HomeActivity"></activity>
+        <activity android:name=".activities.HomeActivity" />
+        <activity android:name=".SponsorsActivity" />
     </application>
 
 </manifest>
