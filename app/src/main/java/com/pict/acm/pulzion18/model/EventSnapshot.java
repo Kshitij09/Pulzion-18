@@ -1,8 +1,11 @@
 package com.pict.acm.pulzion18.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.HashMap;
 
-public class EventSnapshot {
+public class EventSnapshot implements Parcelable {
     String name;
     String description;
     String fees;
@@ -13,8 +16,32 @@ public class EventSnapshot {
     String tagline;
     String teams;
     HashMap<String, Long> contact;
+    public static Parcelable.Creator<EventSnapshot> CREATOR = new Creator<EventSnapshot>() {
+        @Override
+        public EventSnapshot createFromParcel(Parcel parcel) {
+            return new EventSnapshot(parcel);
+        }
+
+        @Override
+        public EventSnapshot[] newArray(int i) {
+            return new EventSnapshot[i];
+        }
+    };
 
     public EventSnapshot() {
+    }
+
+    protected EventSnapshot(Parcel in) {
+        this.name = in.readString();
+        this.description = in.readString();
+        this.fees = in.readString();
+        this.index = in.readLong();
+        this.type = in.readString();
+        this.status = in.readString();
+        this.rules = in.readString();
+        this.tagline = in.readString();
+        this.teams = in.readString();
+        this.contact = in.readHashMap(HashMap.class.getClassLoader());
     }
 
     public EventSnapshot(String name, String description, String fees, Long index, String type, String status, String rules, String tagline, String teams, HashMap<String, Long> contact) {
@@ -108,5 +135,24 @@ public class EventSnapshot {
 
     public void setContact(HashMap<String, Long> contact) {
         this.contact = contact;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(name);
+        parcel.writeString(description);
+        parcel.writeString(fees);
+        parcel.writeLong(index);
+        parcel.writeString(type);
+        parcel.writeString(status);
+        parcel.writeString(rules);
+        parcel.writeString(tagline);
+        parcel.writeString(teams);
+        parcel.writeMap(contact);
     }
 }
