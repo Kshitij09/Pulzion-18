@@ -9,19 +9,23 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.pict.acm.pulzion18.ListInitializer;
 import com.pict.acm.pulzion18.R;
 import com.pict.acm.pulzion18.model.EventEntry;
+import com.pict.acm.pulzion18.model.EventSnapshot;
 
 import java.util.ArrayList;
 
 public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.EventViewHolder> {
-    private ArrayList<EventEntry> eventList;
+    private ArrayList<EventSnapshot> eventList;
     private Context context;
     private OnItemClickListener listener;
+    private ListInitializer initializer;
 
-    public EventsAdapter(Context context, ArrayList<EventEntry> eventList) {
-        this.eventList = eventList;
+    public EventsAdapter(Context context) {
+        eventList = new ArrayList<>();
         this.context = context;
+        initializer = ListInitializer.getInstance();
     }
 
     @NonNull
@@ -33,10 +37,11 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.EventViewH
 
     @Override
     public void onBindViewHolder(@NonNull EventViewHolder holder, int position) {
-        EventEntry entry = eventList.get(position);
-        holder.eventTitle.setText(entry.eventName);
-        holder.eventLogo.setImageDrawable(context.getDrawable(entry.eventLogo));
-        holder.eventTitle.setTextColor(context.getResources().getColor(entry.color));
+        EventSnapshot entry = eventList.get(position);
+        EventEntry resEntry = initializer.eventsMap.get(entry.getName());
+        holder.eventTitle.setText(entry.getName());
+        holder.eventLogo.setImageDrawable(context.getDrawable(resEntry.eventLogo));
+        holder.eventTitle.setTextColor(context.getResources().getColor(resEntry.color));
         /*Drawable edge = context.getResources().getDrawable(R.drawable.card_edge,context.getTheme());
         edge.setTint(context.getResources().getColor(entry.color));*/
         //holder.layout.setBackground(edge);
@@ -52,8 +57,13 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.EventViewH
         this.listener = listener;
     }
 
+    public void setEventList(ArrayList<EventSnapshot> list) {
+        eventList.addAll(list);
+        notifyDataSetChanged();
+    }
+
     public interface OnItemClickListener {
-        void onItemClick(ImageView view, int position);
+        void onItemClick(ImageView view, EventSnapshot item);
     }
 
     class EventViewHolder extends RecyclerView.ViewHolder {
@@ -74,7 +84,7 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.EventViewH
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    listener.onItemClick(eventLogo, position);
+                    listener.onItemClick(eventLogo, eventList.get(position));
                 }
             });
         }

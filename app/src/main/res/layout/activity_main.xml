@@ -54,15 +54,7 @@
         android:backgroundTint="@color/colorPrimary"
         android:elevation="8dp"
         app:fabAlignmentMode="end"
+        app:fabAttached="false"
         app:navigationIcon="@drawable/ic_menu" />
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/filter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_filter"
-        app:elevation="8dp"
-        android:onClick="LaunchFilterBottomSheet"
-        app:layout_anchor="@id/bar" />
 
 </android.support.design.widget.CoordinatorLayout>

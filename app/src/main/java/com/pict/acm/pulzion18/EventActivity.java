@@ -2,6 +2,7 @@ package com.pict.acm.pulzion18;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.bottomappbar.BottomAppBar;
 import android.support.design.button.MaterialButton;
 import android.support.design.chip.Chip;
@@ -18,44 +19,46 @@ import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.ImageView;
 
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
-import com.pict.acm.pulzion18.adapters.FirebaseEventsAdapter;
+import com.google.firebase.database.ValueEventListener;
+import com.pict.acm.pulzion18.activities.AboutUs;
+import com.pict.acm.pulzion18.adapters.EventsAdapter;
 import com.pict.acm.pulzion18.model.EventSnapshot;
 import com.wang.avi.AVLoadingIndicatorView;
+
+import java.util.ArrayList;
 
 import static com.pict.acm.pulzion18.Constants.PULZION.EVENTS;
 import static com.pict.acm.pulzion18.Constants.PULZION.INDEX;
 import static com.pict.acm.pulzion18.Constants.PULZION.NONTECH;
 import static com.pict.acm.pulzion18.Constants.PULZION.TECHNICAL;
-import static com.pict.acm.pulzion18.Constants.PULZION.TYPE;
 
-public class EventActivity extends AppCompatActivity implements FirebaseEventsAdapter.OnItemClickListener {
+public class EventActivity extends AppCompatActivity implements EventsAdapter.OnItemClickListener {
     public static final String TAG = EventActivity.class.getSimpleName();
     RecyclerView eventsRecycler;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference rootRef = database.getReference();
-    FirebaseEventsAdapter adapter;
+    EventsAdapter adapter;
     AVLoadingIndicatorView indicator;
     FloatingActionButton btnFilter;
     Boolean filterTechnical, filterNonTechnical;
-    Query query;
     FirebaseRecyclerOptions<EventSnapshot> options;
     MaterialButton btnSponsor;
+    MaterialButton btnAbout;
+    ArrayList<EventSnapshot> events;
 
     @Override
     protected void onStart() {
         super.onStart();
-        if (filterNonTechnical || filterNonTechnical)
-            adapter.startListening();
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        if (filterTechnical || filterNonTechnical)
-            adapter.stopListening();
     }
 
     @Override
@@ -68,7 +71,6 @@ public class EventActivity extends AppCompatActivity implements FirebaseEventsAd
         eventsRecycler = findViewById(R.id.event_list);
         indicator = findViewById(R.id.indicator);
         eventsRecycler.setHasFixedSize(true);
-        btnFilter = findViewById(R.id.filter);
         btnSponsor = findViewById(R.id.btn_sponsors);
         btnSponsor.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,31 +78,42 @@ public class EventActivity extends AppCompatActivity implements FirebaseEventsAd
                 startActivity(new Intent(EventActivity.this, SponsorsActivity.class));
             }
         });
+        btnAbout = findViewById(R.id.btn_about);
+        btnAbout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(EventActivity.this, AboutUs.class));
+            }
+        });
 
-        Intent intent = getIntent();
-        filterTechnical = intent.getBooleanExtra(TECHNICAL, true);
-        filterNonTechnical = intent.getBooleanExtra(NONTECH, true);
+        indicator.show();
+        eventsRecycler.setVisibility(View.GONE);
+        events = new ArrayList<>();
+        adapter = new EventsAdapter(EventActivity.this);
+        adapter.setOnItemClickListener(EventActivity.this);
+        final Query eventsRef = rootRef.child(EVENTS).orderByChild(INDEX);
+        eventsRef.keepSynced(true);
+        eventsRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot snap :
+                        dataSnapshot.getChildren()) {
+                    EventSnapshot item = snap.getValue(EventSnapshot.class);
+                    Log.d(TAG, "onDataChange: " + item.getName());
+                    events.add(item);
+                }
+                adapter.setEventList(events);
+                eventsRecycler.setAdapter(adapter);
+                eventsRecycler.setVisibility(View.VISIBLE);
+                setupRecyclerView();
+                indicator.hide();
+            }
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
-        if (!filterTechnical && !filterNonTechnical) {
-            indicator.hide();
-            eventsRecycler.setVisibility(View.INVISIBLE);
-        } else {
-            if (filterTechnical && filterNonTechnical)
-                query = rootRef.child(EVENTS).orderByChild(INDEX);
-            else if (filterTechnical)
-                query = rootRef.child(EVENTS).orderByChild(TYPE).equalTo(TECHNICAL);
-            else if (filterNonTechnical)
-                query = rootRef.child(EVENTS).orderByChild(TYPE).equalTo(NONTECH);
-            query.keepSynced(true);
-            FirebaseRecyclerOptions<EventSnapshot> options = new FirebaseRecyclerOptions.Builder<EventSnapshot>()
-                    .setQuery(query, EventSnapshot.class)
-                    .build();
-            adapter = new FirebaseEventsAdapter(EventActivity.this, options, indicator, eventsRecycler);
-            adapter.setOnItemClickListener(this);
-            eventsRecycler.setAdapter(adapter);
-            setupRecyclerView();
-        }
+            }
+        });
     }
 
     private void setupNavigationbar() {
@@ -136,9 +149,9 @@ public class EventActivity extends AppCompatActivity implements FirebaseEventsAd
     }
 
     @Override
-    public void onItemClick(ImageView view, String name) {
+    public void onItemClick(ImageView view, EventSnapshot item) {
         Intent detailsActivity = new Intent(EventActivity.this, EventDetails.class);
-        detailsActivity.putExtra("name", name);
+        detailsActivity.putExtra("item", item);
         ActivityOptionsCompat optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(EventActivity.this, view, ViewCompat.getTransitionName(view));
         startActivity(detailsActivity, optionsCompat.toBundle());
     }
