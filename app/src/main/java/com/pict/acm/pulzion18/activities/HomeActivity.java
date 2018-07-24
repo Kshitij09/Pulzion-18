@@ -14,7 +14,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-import com.pict.acm.pulzion18.EventActivity;
 import com.pict.acm.pulzion18.R;
 
 import java.util.ArrayList;

@@ -38,7 +38,6 @@
     <style name="Widget.Pulzion18.BottomSheet" parent="Widget.MaterialComponents.BottomSheet.Modal">
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:navigationBarColor">@android:color/white</item>
-        <item name="android:background">@drawable/bg_bottom_sheet</item>
         <item name="android:windowIsFloating">false</item>
     </style>
 

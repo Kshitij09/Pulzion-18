@@ -6,6 +6,8 @@ import android.support.design.button.MaterialButton;
 import android.view.View;
 
 import com.pict.acm.pulzion18.activities.AboutUs;
+import com.pict.acm.pulzion18.activities.EventActivity;
+import com.pict.acm.pulzion18.activities.SponsorsActivity;
 
 public class BackdropClickListener implements View.OnClickListener {
     Activity activity;
@@ -13,7 +15,7 @@ public class BackdropClickListener implements View.OnClickListener {
     MaterialButton btnAbout;
     MaterialButton btnEvents;
 
-    BackdropClickListener(Activity activity) {
+    public BackdropClickListener(Activity activity) {
         this.activity = activity;
         btnAbout = activity.findViewById(R.id.btn_about);
         btnEvents = activity.findViewById(R.id.btn_events);

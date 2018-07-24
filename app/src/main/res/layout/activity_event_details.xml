@@ -25,7 +25,7 @@
         android:layout_marginBottom="?actionBarSize"
         android:fitsSystemWindows="true"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:context=".EventDetails">
+        tools:context=".activities.EventDetails">
 
 
         <android.support.constraint.ConstraintLayout

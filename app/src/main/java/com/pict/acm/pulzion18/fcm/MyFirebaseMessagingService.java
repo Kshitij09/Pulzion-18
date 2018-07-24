@@ -13,8 +13,8 @@ import android.util.Log;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
-import com.pict.acm.pulzion18.EventActivity;
 import com.pict.acm.pulzion18.R;
+import com.pict.acm.pulzion18.activities.EventActivity;
 
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
     public static final String TAG = MyFirebaseMessagingService.class.getSimpleName();
