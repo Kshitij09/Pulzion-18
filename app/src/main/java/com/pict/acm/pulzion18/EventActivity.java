@@ -37,7 +37,7 @@ import static com.pict.acm.pulzion18.Constants.PULZION.INDEX;
 import static com.pict.acm.pulzion18.Constants.PULZION.NONTECH;
 import static com.pict.acm.pulzion18.Constants.PULZION.TECHNICAL;
 
-public class EventActivity extends AppCompatActivity implements EventsAdapter.OnItemClickListener {
+public class EventActivity extends AppCompatActivity implements EventsAdapter.OnItemClickListener, View.OnClickListener {
     public static final String TAG = EventActivity.class.getSimpleName();
     RecyclerView eventsRecycler;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -49,42 +49,20 @@ public class EventActivity extends AppCompatActivity implements EventsAdapter.On
     FirebaseRecyclerOptions<EventSnapshot> options;
     MaterialButton btnSponsor;
     MaterialButton btnAbout;
+    MaterialButton btnEvents;
     ArrayList<EventSnapshot> events;
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        BackdropClickListener backListener = new BackdropClickListener(this);
         setupNavigationbar();
 
         eventsRecycler = findViewById(R.id.event_list);
         indicator = findViewById(R.id.indicator);
         eventsRecycler.setHasFixedSize(true);
-        btnSponsor = findViewById(R.id.btn_sponsors);
-        btnSponsor.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(EventActivity.this, SponsorsActivity.class));
-            }
-        });
-        btnAbout = findViewById(R.id.btn_about);
-        btnAbout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(EventActivity.this, AboutUs.class));
-            }
-        });
 
         indicator.show();
         eventsRecycler.setVisibility(View.GONE);
@@ -96,6 +74,7 @@ public class EventActivity extends AppCompatActivity implements EventsAdapter.On
         eventsRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                events = new ArrayList<>();
                 for (DataSnapshot snap :
                         dataSnapshot.getChildren()) {
                     EventSnapshot item = snap.getValue(EventSnapshot.class);
@@ -125,6 +104,12 @@ public class EventActivity extends AppCompatActivity implements EventsAdapter.On
                 new AccelerateDecelerateInterpolator(),
                 getResources().getDrawable(R.drawable.ic_menu),
                 getResources().getDrawable(R.drawable.close_menu)));
+        btnSponsor = findViewById(R.id.btn_sponsors);
+        btnSponsor.setOnClickListener(this);
+        btnAbout = findViewById(R.id.btn_about);
+        btnAbout.setOnClickListener(this);
+        btnEvents = findViewById(R.id.btn_events);
+        btnEvents.setOnClickListener(this);
     }
 
     private void setupRecyclerView() {
@@ -192,6 +177,21 @@ public class EventActivity extends AppCompatActivity implements EventsAdapter.On
             chip.setChipBackgroundColorResource(R.color.colorPrimary);
             chip.setChipStrokeColorResource(android.R.color.transparent);
             chip.setTextColor(getResources().getColor(android.R.color.white));
+        }
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.btn_about:
+                startActivity(new Intent(EventActivity.this, AboutUs.class));
+                break;
+            case R.id.btn_events:
+                startActivity(new Intent(EventActivity.this, EventActivity.class));
+                break;
+            case R.id.btn_sponsors:
+                startActivity(new Intent(EventActivity.this, SponsorsActivity.class));
+                break;
         }
     }
 }

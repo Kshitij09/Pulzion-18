@@ -41,6 +41,7 @@ public class SponsorsActivity extends AppCompatActivity {
         sponsorRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                sponsors = new ArrayList<>();
                 for (DataSnapshot snap :
                         dataSnapshot.getChildren()) {
                     SponsorSnapshot model = snap.getValue(SponsorSnapshot.class);

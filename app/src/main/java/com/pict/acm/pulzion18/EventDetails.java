@@ -37,6 +37,7 @@ public class EventDetails extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_details);
+
         Intent intent = getIntent();
         ListInitializer initializer = ListInitializer.getInstance();
         EventSnapshot item = intent.getExtras().getParcelable("item");
