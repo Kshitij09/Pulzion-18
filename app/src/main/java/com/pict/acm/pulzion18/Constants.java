@@ -9,5 +9,6 @@ public class Constants {
         public static final String TECHNICAL = "technical";
         public static final String NONTECH = "non-technical";
         public static final String SPONSORS = "sponsors";
+        public static final String SLIDES = "slides";
     }
 }

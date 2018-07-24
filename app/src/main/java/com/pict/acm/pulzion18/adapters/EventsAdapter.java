@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.pict.acm.pulzion18.ListInitializer;
 import com.pict.acm.pulzion18.R;
 import com.pict.acm.pulzion18.model.EventEntry;
@@ -40,7 +41,8 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.EventViewH
         EventSnapshot entry = eventList.get(position);
         EventEntry resEntry = initializer.eventsMap.get(entry.getName());
         holder.eventTitle.setText(entry.getName());
-        holder.eventLogo.setImageDrawable(context.getDrawable(resEntry.eventLogo));
+        Glide.with(holder.itemView.getContext()).load(context.getResources().getDrawable(resEntry.eventLogo)).into(holder.eventLogo);
+        //holder.eventLogo.setImageDrawable(context.getDrawable(resEntry.eventLogo));
         holder.eventTitle.setTextColor(context.getResources().getColor(resEntry.color));
         /*Drawable edge = context.getResources().getDrawable(R.drawable.card_edge,context.getTheme());
         edge.setTint(context.getResources().getColor(entry.color));*/
