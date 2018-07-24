@@ -88,7 +88,7 @@ public class HomeActivity extends AppCompatActivity {
         Intent intent = new Intent();
         intent.setAction("android.intent.action.VIEW");
         intent.addCategory("android.intent.category.BROWSABLE");
-        intent.setData(Uri.parse("http://pict.acm.org/pulzion-18.html"));
+        intent.setData(Uri.parse("http://pict.acm.org/pulzion-18/"));
         startActivity(intent);
     }
 
