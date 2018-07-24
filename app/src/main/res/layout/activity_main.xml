@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:clipChildren="false"
     android:clipToPadding="false"
-    tools:context=".EventActivity">
+    tools:context=".activities.EventActivity">
 
     <com.wang.avi.AVLoadingIndicatorView
         android:id="@+id/indicator"

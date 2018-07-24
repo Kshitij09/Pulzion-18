@@ -22,8 +22,10 @@ public class ListInitializer {
         eventsMap.put("Insight", new EventEntry("Insight", R.drawable.ev_insight, R.color.cyan));
         eventsMap.put("Cerebro", new EventEntry("Cerebro", R.drawable.ev_cerebro, R.color.yellow_red));
         eventsMap.put("Quiz to Bid", new EventEntry("Quiz to Bid", R.drawable.ev_quiz_to_bid, R.color.pulzion_green));
-        eventsMap.put("Photoshop Royale", new EventEntry("Photoshop Royale", R.drawable.ev_dextrous, R.color.french_blue));
-        eventsMap.put("Web and Android development", new EventEntry("Web and Android development", R.drawable.ev_codebuddy, R.color.mindaro));
+        eventsMap.put("Photoshop Royale", new EventEntry("Photoshop Royale", R.drawable.ev_psroyale, R.color.french_blue));
+        eventsMap.put("Web and Android development", new EventEntry("Web and Android development", R.drawable.ev_webandroid, R.color.yellow_red));
+        eventsMap.put("Cod<e>xact", new EventEntry("Cod<e>xact", R.drawable.ev_codeexact, R.color.colorAccent));
+        eventsMap.put("DataQuest", new EventEntry("DataQuest", R.drawable.ev_dataquest, R.color.persian_green));
     }
 
     public static ListInitializer getInstance() {

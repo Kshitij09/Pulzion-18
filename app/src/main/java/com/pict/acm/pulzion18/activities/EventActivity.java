@@ -1,4 +1,4 @@
-package com.pict.acm.pulzion18;
+package com.pict.acm.pulzion18.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,7 +6,6 @@ import android.support.annotation.NonNull;
 import android.support.design.bottomappbar.BottomAppBar;
 import android.support.design.button.MaterialButton;
 import android.support.design.chip.Chip;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -25,7 +24,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-import com.pict.acm.pulzion18.activities.AboutUs;
+import com.pict.acm.pulzion18.BackdropClickListener;
+import com.pict.acm.pulzion18.GridMarginDecoration;
+import com.pict.acm.pulzion18.NavigationIconClickListener;
+import com.pict.acm.pulzion18.R;
 import com.pict.acm.pulzion18.adapters.EventsAdapter;
 import com.pict.acm.pulzion18.model.EventSnapshot;
 import com.wang.avi.AVLoadingIndicatorView;
@@ -44,47 +46,23 @@ public class EventActivity extends AppCompatActivity implements EventsAdapter.On
     DatabaseReference rootRef = database.getReference();
     EventsAdapter adapter;
     AVLoadingIndicatorView indicator;
-    FloatingActionButton btnFilter;
     Boolean filterTechnical, filterNonTechnical;
     FirebaseRecyclerOptions<EventSnapshot> options;
     MaterialButton btnSponsor;
     MaterialButton btnAbout;
+    MaterialButton btnEvents;
     ArrayList<EventSnapshot> events;
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         setupNavigationbar();
 
         eventsRecycler = findViewById(R.id.event_list);
         indicator = findViewById(R.id.indicator);
         eventsRecycler.setHasFixedSize(true);
-        btnSponsor = findViewById(R.id.btn_sponsors);
-        btnSponsor.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(EventActivity.this, SponsorsActivity.class));
-            }
-        });
-        btnAbout = findViewById(R.id.btn_about);
-        btnAbout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(EventActivity.this, AboutUs.class));
-            }
-        });
 
         indicator.show();
         eventsRecycler.setVisibility(View.GONE);
@@ -96,6 +74,7 @@ public class EventActivity extends AppCompatActivity implements EventsAdapter.On
         eventsRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                events = new ArrayList<>();
                 for (DataSnapshot snap :
                         dataSnapshot.getChildren()) {
                     EventSnapshot item = snap.getValue(EventSnapshot.class);
@@ -125,6 +104,13 @@ public class EventActivity extends AppCompatActivity implements EventsAdapter.On
                 new AccelerateDecelerateInterpolator(),
                 getResources().getDrawable(R.drawable.ic_menu),
                 getResources().getDrawable(R.drawable.close_menu)));
+        /*btnSponsor = findViewById(R.id.btn_sponsors);
+        btnSponsor.setOnClickListener(this);
+        btnAbout = findViewById(R.id.btn_about);
+        btnAbout.setOnClickListener(this);
+        btnEvents = findViewById(R.id.btn_events);
+        btnEvents.setOnClickListener(this);*/
+        BackdropClickListener listener = new BackdropClickListener(this);
     }
 
     private void setupRecyclerView() {
@@ -154,13 +140,6 @@ public class EventActivity extends AppCompatActivity implements EventsAdapter.On
         detailsActivity.putExtra("item", item);
         ActivityOptionsCompat optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(EventActivity.this, view, ViewCompat.getTransitionName(view));
         startActivity(detailsActivity, optionsCompat.toBundle());
-    }
-
-    public void LaunchFilterBottomSheet(View view) {
-        FilterBottomSheet bottomSheet = new FilterBottomSheet();
-        bottomSheet.setTech(filterTechnical);
-        bottomSheet.setNonTech(filterNonTechnical);
-        bottomSheet.show(getSupportFragmentManager(), "filterEvents");
     }
 
     public void FilterList(View view) {
@@ -194,4 +173,19 @@ public class EventActivity extends AppCompatActivity implements EventsAdapter.On
             chip.setTextColor(getResources().getColor(android.R.color.white));
         }
     }
+
+    /*@Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.btn_about:
+                startActivity(new Intent(EventActivity.this, AboutUs.class));
+                break;
+            case R.id.btn_events:
+                startActivity(new Intent(EventActivity.this, EventActivity.class));
+                break;
+            case R.id.btn_sponsors:
+                startActivity(new Intent(EventActivity.this, SponsorsActivity.class));
+                break;
+        }
+    }*/
 }

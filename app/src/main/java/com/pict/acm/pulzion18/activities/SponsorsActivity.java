@@ -1,4 +1,4 @@
-package com.pict.acm.pulzion18;
+package com.pict.acm.pulzion18.activities;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,6 +10,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.pict.acm.pulzion18.R;
 import com.pict.acm.pulzion18.adapters.SponsorAdapter;
 import com.pict.acm.pulzion18.model.SponsorSnapshot;
 import com.wang.avi.AVLoadingIndicatorView;
@@ -41,6 +42,7 @@ public class SponsorsActivity extends AppCompatActivity {
         sponsorRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                sponsors = new ArrayList<>();
                 for (DataSnapshot snap :
                         dataSnapshot.getChildren()) {
                     SponsorSnapshot model = snap.getValue(SponsorSnapshot.class);

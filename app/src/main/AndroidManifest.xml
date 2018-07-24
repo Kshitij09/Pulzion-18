@@ -17,11 +17,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".EventDetails" />
-        <activity android:name=".EventActivity" />
+        <activity android:name=".activities.EventDetails" />
+        <activity android:name=".activities.EventActivity" />
         <activity android:name=".activities.HomeActivity" />
-        <activity android:name=".SponsorsActivity" />
+        <activity android:name=".activities.SponsorsActivity" />
         <activity android:name=".activities.AboutUs"></activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

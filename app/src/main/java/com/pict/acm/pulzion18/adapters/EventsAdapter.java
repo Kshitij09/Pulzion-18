@@ -41,12 +41,10 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.EventViewH
         EventSnapshot entry = eventList.get(position);
         EventEntry resEntry = initializer.eventsMap.get(entry.getName());
         holder.eventTitle.setText(entry.getName());
-        Glide.with(holder.itemView.getContext()).load(context.getResources().getDrawable(resEntry.eventLogo)).into(holder.eventLogo);
-        //holder.eventLogo.setImageDrawable(context.getDrawable(resEntry.eventLogo));
-        holder.eventTitle.setTextColor(context.getResources().getColor(resEntry.color));
-        /*Drawable edge = context.getResources().getDrawable(R.drawable.card_edge,context.getTheme());
-        edge.setTint(context.getResources().getColor(entry.color));*/
-        //holder.layout.setBackground(edge);
+        if (resEntry != null) {
+            Glide.with(holder.itemView.getContext()).load(context.getResources().getDrawable(resEntry.eventLogo)).into(holder.eventLogo);
+            holder.eventTitle.setTextColor(context.getResources().getColor(resEntry.color));
+        }
         holder.bind(position, listener);
     }
 
@@ -60,7 +58,7 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.EventViewH
     }
 
     public void setEventList(ArrayList<EventSnapshot> list) {
-        eventList.addAll(list);
+        eventList = new ArrayList<>(list);
         notifyDataSetChanged();
     }
 

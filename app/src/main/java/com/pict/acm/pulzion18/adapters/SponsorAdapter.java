@@ -6,9 +6,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.facebook.drawee.view.SimpleDraweeView;
+import com.bumptech.glide.Glide;
 import com.pict.acm.pulzion18.R;
 import com.pict.acm.pulzion18.model.SponsorSnapshot;
 
@@ -33,6 +34,7 @@ public class SponsorAdapter extends RecyclerView.Adapter<SponsorAdapter.SponsorH
         SponsorSnapshot snapshot = sponsors.get(position);
         holder.name.setText(snapshot.getName());
         Uri uri = Uri.parse(snapshot.getImageUrl());
+        Glide.with(holder.itemView.getContext()).load(uri).into(holder.sponsorLogo);
         holder.sponsorLogo.setImageURI(uri);
     }
 
@@ -42,7 +44,7 @@ public class SponsorAdapter extends RecyclerView.Adapter<SponsorAdapter.SponsorH
     }
 
     public class SponsorHolder extends RecyclerView.ViewHolder {
-        SimpleDraweeView sponsorLogo;
+        ImageView sponsorLogo;
         TextView name;
 
         public SponsorHolder(@NonNull View itemView) {
