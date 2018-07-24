@@ -2,7 +2,9 @@ package com.pict.acm.pulzion18;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.bottomappbar.BottomAppBar;
 import android.support.v7.app.AppCompatActivity;
+import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -30,6 +32,7 @@ public class EventDetails extends AppCompatActivity {
     TextView fees;
     TextView txt_contact;
     TextView contact;
+
     //FloatingActionButton registerBtn;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference events = database.getReference().child(EVENTS);
@@ -37,7 +40,7 @@ public class EventDetails extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_details);
-
+        setupNavigationbar();
         Intent intent = getIntent();
         ListInitializer initializer = ListInitializer.getInstance();
         EventSnapshot item = intent.getExtras().getParcelable("item");
@@ -82,8 +85,15 @@ public class EventDetails extends AppCompatActivity {
         tagline.setText(item.getTagline());
         description.setText(item.getDescription());
         String[] ev_rules = item.getRules().split("\\.");
-        for (int i = 0; i < ev_rules.length; i++) {
-            rules.append(ev_rules[i] + " \n");
+        if (item.getName().equals("Photoshop Royale")) {
+            rules.append(ev_rules[0] + "." + ev_rules[1] + "." + ev_rules[2] + " \n");
+            for (int i = 3; i < ev_rules.length; i++) {
+                rules.append(ev_rules[i] + " \n");
+            }
+        } else {
+            for (int i = 0; i < ev_rules.length; i++) {
+                rules.append(ev_rules[i] + " \n");
+            }
         }
         String[] ev_teams = item.getTeams().split("\\.");
         for (int i = 0; i < ev_teams.length; i++) {
@@ -95,4 +105,37 @@ public class EventDetails extends AppCompatActivity {
             contact.append(pair.getKey() + ": " + pair.getValue() + " \n");
         }
     }
+
+    private void setupNavigationbar() {
+        BottomAppBar bottomAppBar = findViewById(R.id.bar);
+        bottomAppBar.setNavigationOnClickListener(new NavigationIconClickListener(
+                EventDetails.this,
+                findViewById(R.id.detail_view),
+                findViewById(R.id.backdrop),
+                new AccelerateDecelerateInterpolator(),
+                getResources().getDrawable(R.drawable.ic_menu),
+                getResources().getDrawable(R.drawable.close_menu)));
+        BackdropClickListener listener = new BackdropClickListener(this);
+        /*btnSponsor = findViewById(R.id.btn_sponsors);
+        btnSponsor.setOnClickListener(this);
+        btnAbout = findViewById(R.id.btn_about);
+        btnAbout.setOnClickListener(this);
+        btnEvents = findViewById(R.id.btn_events);
+        btnEvents.setOnClickListener(this);*/
+    }
+
+    /*@Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.btn_about:
+                startActivity(new Intent(EventDetails.this, AboutUs.class));
+                break;
+            case R.id.btn_events:
+                startActivity(new Intent(EventDetails.this, EventActivity.class));
+                break;
+            case R.id.btn_sponsors:
+                startActivity(new Intent(EventDetails.this, SponsorsActivity.class));
+                break;
+        }
+    }*/
 }

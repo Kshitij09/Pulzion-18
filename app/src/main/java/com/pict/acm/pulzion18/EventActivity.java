@@ -6,7 +6,6 @@ import android.support.annotation.NonNull;
 import android.support.design.bottomappbar.BottomAppBar;
 import android.support.design.button.MaterialButton;
 import android.support.design.chip.Chip;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -25,7 +24,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-import com.pict.acm.pulzion18.activities.AboutUs;
 import com.pict.acm.pulzion18.adapters.EventsAdapter;
 import com.pict.acm.pulzion18.model.EventSnapshot;
 import com.wang.avi.AVLoadingIndicatorView;
@@ -37,14 +35,13 @@ import static com.pict.acm.pulzion18.Constants.PULZION.INDEX;
 import static com.pict.acm.pulzion18.Constants.PULZION.NONTECH;
 import static com.pict.acm.pulzion18.Constants.PULZION.TECHNICAL;
 
-public class EventActivity extends AppCompatActivity implements EventsAdapter.OnItemClickListener, View.OnClickListener {
+public class EventActivity extends AppCompatActivity implements EventsAdapter.OnItemClickListener {
     public static final String TAG = EventActivity.class.getSimpleName();
     RecyclerView eventsRecycler;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference rootRef = database.getReference();
     EventsAdapter adapter;
     AVLoadingIndicatorView indicator;
-    FloatingActionButton btnFilter;
     Boolean filterTechnical, filterNonTechnical;
     FirebaseRecyclerOptions<EventSnapshot> options;
     MaterialButton btnSponsor;
@@ -57,7 +54,6 @@ public class EventActivity extends AppCompatActivity implements EventsAdapter.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        BackdropClickListener backListener = new BackdropClickListener(this);
         setupNavigationbar();
 
         eventsRecycler = findViewById(R.id.event_list);
@@ -104,12 +100,13 @@ public class EventActivity extends AppCompatActivity implements EventsAdapter.On
                 new AccelerateDecelerateInterpolator(),
                 getResources().getDrawable(R.drawable.ic_menu),
                 getResources().getDrawable(R.drawable.close_menu)));
-        btnSponsor = findViewById(R.id.btn_sponsors);
+        /*btnSponsor = findViewById(R.id.btn_sponsors);
         btnSponsor.setOnClickListener(this);
         btnAbout = findViewById(R.id.btn_about);
         btnAbout.setOnClickListener(this);
         btnEvents = findViewById(R.id.btn_events);
-        btnEvents.setOnClickListener(this);
+        btnEvents.setOnClickListener(this);*/
+        BackdropClickListener listener = new BackdropClickListener(this);
     }
 
     private void setupRecyclerView() {
@@ -139,13 +136,6 @@ public class EventActivity extends AppCompatActivity implements EventsAdapter.On
         detailsActivity.putExtra("item", item);
         ActivityOptionsCompat optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(EventActivity.this, view, ViewCompat.getTransitionName(view));
         startActivity(detailsActivity, optionsCompat.toBundle());
-    }
-
-    public void LaunchFilterBottomSheet(View view) {
-        FilterBottomSheet bottomSheet = new FilterBottomSheet();
-        bottomSheet.setTech(filterTechnical);
-        bottomSheet.setNonTech(filterNonTechnical);
-        bottomSheet.show(getSupportFragmentManager(), "filterEvents");
     }
 
     public void FilterList(View view) {
@@ -180,7 +170,7 @@ public class EventActivity extends AppCompatActivity implements EventsAdapter.On
         }
     }
 
-    @Override
+    /*@Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_about:
@@ -193,5 +183,5 @@ public class EventActivity extends AppCompatActivity implements EventsAdapter.On
                 startActivity(new Intent(EventActivity.this, SponsorsActivity.class));
                 break;
         }
-    }
+    }*/
 }

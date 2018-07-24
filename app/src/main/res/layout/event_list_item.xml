@@ -29,12 +29,14 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/event_logo"
             android:layout_centerHorizontal="true"
-            android:fontFamily="serif-monospace"
+            android:layout_margin="2dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/philosopher"
             android:text="Event Title"
             android:textAlignment="center"
             android:textColor="#FFF"
-            android:layout_margin="2dp"
-            android:layout_marginBottom="8dp"
             android:textSize="18sp" />
     </RelativeLayout>
 </android.support.design.card.MaterialCardView>

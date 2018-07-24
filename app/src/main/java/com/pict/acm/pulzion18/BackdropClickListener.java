@@ -1,29 +1,49 @@
 package com.pict.acm.pulzion18;
 
-import android.content.Context;
+import android.app.Activity;
 import android.content.Intent;
+import android.support.design.button.MaterialButton;
 import android.view.View;
 
 import com.pict.acm.pulzion18.activities.AboutUs;
 
 public class BackdropClickListener implements View.OnClickListener {
-    Context context;
+    Activity activity;
+    MaterialButton btnSponsor;
+    MaterialButton btnAbout;
+    MaterialButton btnEvents;
 
-    BackdropClickListener(Context context) {
-        this.context = context;
+    BackdropClickListener(Activity activity) {
+        this.activity = activity;
+        btnAbout = activity.findViewById(R.id.btn_about);
+        btnEvents = activity.findViewById(R.id.btn_events);
+        btnSponsor = activity.findViewById(R.id.btn_sponsors);
+        btnSponsor.setOnClickListener(this);
+        btnEvents.setOnClickListener(this);
+        btnAbout.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
+        Intent intent;
         switch (view.getId()) {
             case R.id.btn_about:
-                context.startActivity(new Intent(context, AboutUs.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                intent = new Intent(activity, AboutUs.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                activity.startActivity(intent);
                 break;
             case R.id.btn_events:
-                context.startActivity(new Intent(context, EventActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                intent = new Intent(activity, EventActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                activity.startActivity(intent);
                 break;
             case R.id.btn_sponsors:
-                context.startActivity(new Intent(context, SponsorsActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                intent = new Intent(activity, SponsorsActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                activity.startActivity(intent);
                 break;
         }
     }
