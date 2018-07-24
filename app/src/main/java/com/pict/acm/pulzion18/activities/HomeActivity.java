@@ -18,19 +18,20 @@ public class HomeActivity extends AppCompatActivity {
     ViewPager viewPager;
     ViewPagerAdapter adapter;
 
-    private String[] images = {
-            "https://firebasestorage.googleapis.com/v0/b/pulzion-18.appspot.com/o/slide1.png?alt=media&token=d7296655-0108-4b3f-9eff-cd9c22ce6e0d",
-            "https://firebasestorage.googleapis.com/v0/b/pulzion-18.appspot.com/o/slide2.jpg?alt=media&token=8d3b00a0-a9cc-469d-9128-ea82249a6d45",
-            "https://firebasestorage.googleapis.com/v0/b/pulzion-18.appspot.com/o/slide3.jpg?alt=media&token=f6fd9eb9-0c6d-4f4d-8993-d43fe34f30a6",
-            "https://firebasestorage.googleapis.com/v0/b/pulzion-18.appspot.com/o/slide4.jpg?alt=media&token=3cdc5d3d-1bf7-4e3a-9ab0-1bf8964929c6",
-            "https://firebasestorage.googleapis.com/v0/b/pulzion-18.appspot.com/o/slide5.jpg?alt=media&token=4a7815b6-d290-42d1-88be-ef1be6178f1f",
-            "https://firebasestorage.googleapis.com/v0/b/pulzion-18.appspot.com/o/slide6.jpg?alt=media&token=b29eb1a5-4708-4737-8940-12de657f8530"
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        String[] images = {
+                "https://firebasestorage.googleapis.com/v0/b/pulzion-18.appspot.com/o/slide1.png?alt=media&token=d7296655-0108-4b3f-9eff-cd9c22ce6e0d",
+                "https://firebasestorage.googleapis.com/v0/b/pulzion-18.appspot.com/o/slide2.jpg?alt=media&token=8d3b00a0-a9cc-469d-9128-ea82249a6d45",
+                "https://firebasestorage.googleapis.com/v0/b/pulzion-18.appspot.com/o/slide3.jpg?alt=media&token=f6fd9eb9-0c6d-4f4d-8993-d43fe34f30a6",
+                "https://firebasestorage.googleapis.com/v0/b/pulzion-18.appspot.com/o/slide4.jpg?alt=media&token=3cdc5d3d-1bf7-4e3a-9ab0-1bf8964929c6",
+                "https://firebasestorage.googleapis.com/v0/b/pulzion-18.appspot.com/o/slide5.jpg?alt=media&token=4a7815b6-d290-42d1-88be-ef1be6178f1f",
+                "https://firebasestorage.googleapis.com/v0/b/pulzion-18.appspot.com/o/slide6.jpg?alt=media&token=b29eb1a5-4708-4737-8940-12de657f8530"
+        };
 
         viewPager = findViewById(R.id.viewPager);
         adapter = new ViewPagerAdapter(HomeActivity.this, images);
@@ -87,7 +88,7 @@ public class HomeActivity extends AppCompatActivity {
         Intent intent = new Intent();
         intent.setAction("android.intent.action.VIEW");
         intent.addCategory("android.intent.category.BROWSABLE");
-        intent.setData(Uri.parse("http://pict.acm.org/pulzion17.html"));
+        intent.setData(Uri.parse("http://pict.acm.org/pulzion-18.html"));
         startActivity(intent);
     }
 

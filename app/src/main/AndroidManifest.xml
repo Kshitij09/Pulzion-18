@@ -3,12 +3,12 @@
     package="com.pict.acm.pulzion18">
 
     <application
+        android:name=".Pulzion18"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:name=".Pulzion18"
         android:theme="@style/Theme.Pulzion18">
         <activity android:name=".activities.SplashScreen">
             <intent-filter>
@@ -21,6 +21,7 @@
         <activity android:name=".EventActivity" />
         <activity android:name=".activities.HomeActivity" />
         <activity android:name=".SponsorsActivity" />
+        <activity android:name=".activities.AboutUs"></activity>
     </application>
 
 </manifest>

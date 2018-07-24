@@ -14,4 +14,8 @@
     <string name="login_signup">Login/Signup</string>
     <string name="desc">Image</string>
     <string name="explore">Explore</string>
+    <string name="aboutus">
+        PASC is the PICT ACM Student Chapter. PASC has been recognised as best ACM student chapter.
+        Ours is the most active chapter in Maharashtra.
+    </string>
 </resources>
