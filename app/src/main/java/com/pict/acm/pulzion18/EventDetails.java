@@ -6,10 +6,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.pict.acm.pulzion18.model.EventEntry;
 import com.pict.acm.pulzion18.model.EventSnapshot;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import static com.pict.acm.pulzion18.Constants.PULZION.EVENTS;
 
@@ -24,6 +28,8 @@ public class EventDetails extends AppCompatActivity {
     TextView teams;
     TextView txt_fees;
     TextView fees;
+    TextView txt_contact;
+    TextView contact;
     //FloatingActionButton registerBtn;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference events = database.getReference().child(EVENTS);
@@ -48,11 +54,14 @@ public class EventDetails extends AppCompatActivity {
         txt_rules = findViewById(R.id.txt_rules);
         txt_teams = findViewById(R.id.txt_teams);
         txt_fees = findViewById(R.id.txt_fees);
+        txt_contact = findViewById(R.id.txt_contact);
         fees = findViewById(R.id.fees);
+        contact = findViewById(R.id.contact);
+
         //registerBtn = findViewById(R.id.register);
 
         EventEntry entry = initializer.eventsMap.get(item.getName());
-        eventLogo.setImageDrawable(getResources().getDrawable(entry.eventLogo, getTheme()));
+        Glide.with(this).load(getResources().getDrawable(entry.eventLogo)).into(eventLogo);
         eventTitle.setText(entry.eventName);
         int color = getResources().getColor(entry.color);
         eventTitle.setTextColor(color);
@@ -60,12 +69,14 @@ public class EventDetails extends AppCompatActivity {
         txt_teams.setTextColor(color);
         txt_rules.setTextColor(color);
         txt_fees.setTextColor(color);
+        txt_contact.setTextColor(color);
         rules.setSingleLine(false);
         teams.setSingleLine(false);
 
 
         rules.setText("");
         teams.setText("");
+        contact.setText("");
 
         tagline.setText(item.getTagline());
         description.setText(item.getDescription());
@@ -78,5 +89,9 @@ public class EventDetails extends AppCompatActivity {
             teams.append(ev_teams[i] + " \n");
         }
         fees.setText(item.getFees());
+        HashMap<String, Long> contacts = item.getContact();
+        for (Map.Entry<String, Long> pair : contacts.entrySet()) {
+            contact.append(pair.getKey() + ": " + pair.getValue() + " \n");
+        }
     }
 }

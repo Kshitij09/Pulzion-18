@@ -10,22 +10,25 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.pict.acm.pulzion18.R;
-import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
 
 public class ViewPagerAdapter extends PagerAdapter {
     Activity activity;
-    String[] images;
+    ArrayList<String> images;
     LayoutInflater inflater;
 
-    public ViewPagerAdapter(Activity activity, String[] images) {
+    public ViewPagerAdapter(Activity activity, ArrayList<String> images) {
         this.activity = activity;
         this.images = images;
     }
 
     @Override
     public int getCount() {
-        return images.length;
+        return images.size();
     }
 
     @Override
@@ -39,7 +42,7 @@ public class ViewPagerAdapter extends PagerAdapter {
         View itemView = inflater.inflate(R.layout.viewpager_item, container, false);
 
         ImageView image;
-        image = (ImageView) itemView.findViewById(R.id.imageView);
+        image = itemView.findViewById(R.id.imageView);
         DisplayMetrics dis = new DisplayMetrics();
         activity.getWindowManager().getDefaultDisplay().getMetrics(dis);
         int height = dis.heightPixels;
@@ -48,10 +51,10 @@ public class ViewPagerAdapter extends PagerAdapter {
         image.setMinimumWidth(width);
 
         try {
-            Picasso.get()
-                    .load(images[position])
-                    .placeholder(R.mipmap.ic_launcher)
-                    .error(R.mipmap.ic_launcher)
+            Glide.with(activity)
+                    .load(images.get(position))
+                    .apply(new RequestOptions().placeholder(R.mipmap.ic_launcher)
+                            .error(R.mipmap.ic_launcher))
                     .into(image);
         } catch (Exception ex) {
 

@@ -20,6 +20,28 @@
             android:padding="12dp">
 
             <TextView
+                android:id="@+id/contact"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:text=""
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_contact" />
+
+            <TextView
+                android:id="@+id/txt_contact"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/contact"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fees" />
+
+            <TextView
                 android:id="@+id/txt_fees"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -145,15 +167,8 @@
         android:elevation="8dp"
         android:backgroundTint="@color/colorPrimary"
         app:fabAlignmentMode="center"
+        app:fabAttached="false"
         app:navigationIcon="@drawable/ic_menu" />
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/register"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_register"
-        app:elevation="8dp"
-        app:layout_anchor="@id/bar" />
 
 </android.support.design.widget.CoordinatorLayout>
 
