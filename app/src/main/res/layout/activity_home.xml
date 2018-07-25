@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:background="@drawable/back"
     tools:context=".activities.HomeActivity"
-    android:alpha="0.85"
     tools:layout_editor_absoluteY="25dp">
 
     <ImageView
