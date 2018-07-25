@@ -21,6 +21,7 @@ public class NavigationIconClickListener implements View.OnClickListener {
     private Context context;
     private View sheet;
     private View backdrop;
+    public View lastView;
     private Interpolator interpolator;
     private int height;
     private boolean backdropShown = false;
@@ -52,6 +53,7 @@ public class NavigationIconClickListener implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
+        lastView = view;
         backdropShown = !backdropShown;
         if (backdropShown)
             backdrop.setVisibility(View.VISIBLE);
@@ -88,5 +90,9 @@ public class NavigationIconClickListener implements View.OnClickListener {
                 ((ImageView) view).setImageDrawable(openIcon);
             }
         }
+    }
+
+    public void toggleBackdrop(View view) {
+        onClick(view);
     }
 }
