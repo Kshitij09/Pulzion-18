@@ -25,6 +25,8 @@
         android:layout_marginBottom="?actionBarSize"
         android:fitsSystemWindows="true"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         tools:context=".activities.EventDetails">
 
 
@@ -42,6 +44,8 @@
                 android:autoLink="phone"
                 android:text=""
                 android:textSize="16sp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_contact" />
 
@@ -103,10 +107,12 @@
             <TextView
                 android:id="@+id/description"
                 android:layout_width="368dp"
-                android:layout_height="wrap_content"
+                android:layout_height="22dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
                 android:text="TextView"
                 android:textAlignment="textStart"
                 android:textSize="16sp"
@@ -147,6 +153,8 @@
                 android:text=""
                 android:textAlignment="textStart"
                 android:textSize="16sp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_rules" />
@@ -170,6 +178,8 @@
                 android:layout_marginTop="16dp"
                 android:text=""
                 android:textSize="16sp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_fees" />
         </android.support.constraint.ConstraintLayout>
