@@ -14,9 +14,11 @@ public class BackdropClickListener implements View.OnClickListener {
     MaterialButton btnSponsor;
     MaterialButton btnAbout;
     MaterialButton btnEvents;
+    NavigationIconClickListener navIconListener;
 
-    public BackdropClickListener(Activity activity) {
+    public BackdropClickListener(Activity activity, NavigationIconClickListener navIconListener) {
         this.activity = activity;
+        this.navIconListener = navIconListener;
         btnAbout = activity.findViewById(R.id.btn_about);
         btnEvents = activity.findViewById(R.id.btn_events);
         btnSponsor = activity.findViewById(R.id.btn_sponsors);
@@ -48,5 +50,8 @@ public class BackdropClickListener implements View.OnClickListener {
                 activity.startActivity(intent);
                 break;
         }
+        navIconListener.toggleBackdrop(navIconListener.lastView);
+        if (!activity.getLocalClassName().equals("activities.EventActivity"))
+            activity.finish();
     }
 }

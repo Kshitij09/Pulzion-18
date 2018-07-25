@@ -97,20 +97,21 @@ public class EventActivity extends AppCompatActivity implements EventsAdapter.On
 
     private void setupNavigationbar() {
         BottomAppBar bottomAppBar = findViewById(R.id.bar);
-        bottomAppBar.setNavigationOnClickListener(new NavigationIconClickListener(
+        NavigationIconClickListener navIconListener = new NavigationIconClickListener(
                 EventActivity.this,
                 findViewById(R.id.event_list),
                 findViewById(R.id.backdrop),
                 new AccelerateDecelerateInterpolator(),
                 getResources().getDrawable(R.drawable.ic_menu),
-                getResources().getDrawable(R.drawable.close_menu)));
+                getResources().getDrawable(R.drawable.close_menu));
+        bottomAppBar.setNavigationOnClickListener(navIconListener);
         /*btnSponsor = findViewById(R.id.btn_sponsors);
         btnSponsor.setOnClickListener(this);
         btnAbout = findViewById(R.id.btn_about);
         btnAbout.setOnClickListener(this);
         btnEvents = findViewById(R.id.btn_events);
         btnEvents.setOnClickListener(this);*/
-        BackdropClickListener listener = new BackdropClickListener(this);
+        BackdropClickListener listener = new BackdropClickListener(this, navIconListener);
     }
 
     private void setupRecyclerView() {

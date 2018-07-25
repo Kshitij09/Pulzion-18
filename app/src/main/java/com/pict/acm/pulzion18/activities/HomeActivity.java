@@ -94,6 +94,7 @@ public class HomeActivity extends AppCompatActivity {
     public void Explore(View view){
         Intent i = new Intent(HomeActivity.this,EventActivity.class);
         startActivity(i);
+        finish();
     }
 
     public void facebook(View view) {

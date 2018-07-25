@@ -113,14 +113,15 @@ public class EventDetails extends AppCompatActivity {
 
     private void setupNavigationbar() {
         BottomAppBar bottomAppBar = findViewById(R.id.bar);
-        bottomAppBar.setNavigationOnClickListener(new NavigationIconClickListener(
+        NavigationIconClickListener navIconListener = new NavigationIconClickListener(
                 EventDetails.this,
                 findViewById(R.id.detail_view),
                 findViewById(R.id.backdrop),
                 new AccelerateDecelerateInterpolator(),
                 getResources().getDrawable(R.drawable.ic_menu),
-                getResources().getDrawable(R.drawable.close_menu)));
-        BackdropClickListener listener = new BackdropClickListener(this);
+                getResources().getDrawable(R.drawable.close_menu));
+        bottomAppBar.setNavigationOnClickListener(navIconListener);
+        BackdropClickListener listener = new BackdropClickListener(this, navIconListener);
         /*btnSponsor = findViewById(R.id.btn_sponsors);
         btnSponsor.setOnClickListener(this);
         btnAbout = findViewById(R.id.btn_about);
