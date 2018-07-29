@@ -17,11 +17,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.EventDetails" />
-        <activity android:name=".activities.EventActivity" />
-        <activity android:name=".activities.HomeActivity" />
-        <activity android:name=".activities.SponsorsActivity" />
-        <activity android:name=".activities.AboutUs"></activity>
+        <activity
+            android:name=".activities.EventDetails"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.EventActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.HomeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.SponsorsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.AboutUs"
+            android:screenOrientation="portrait" />
 
         <meta-data
             android:name="preloaded_fonts"

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -36,7 +37,7 @@
                 android:id="@+id/textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="PASC is the PICT ACM Chapter. PASC has been recognised as best ACM student chapter this year. The PICT ACM Students Chapter (PASC) is the most active ACM chapter in the state of Maharashtra. PICT, being one of the best colleges in the state for Computer Engineering, PASC is a highly prestigious chapter. "
+                android:text="PASC is the most active ACM Chapter in INDIA. PICT being one of the best colleges in Maharashtra for Computer Science, PASC is a highly prestigious chapter."
                 android:textAppearance="@style/TextAppearance.Pulzion18.About" />
 
             <TextView
@@ -44,30 +45,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="The chapter was started in March 2011 with a vision to realize the goals of ACM International at the grass-root level in PICT. We aim to provide opportunities to the students in the region in the form of rewarding interactions with peers and renowned experts in their respective fields of interest by organizing world-class seminars, lectures and workshops."
-                android:textAppearance="@style/TextAppearance.Pulzion18.About" />
-
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="The chapter successfully conducts seminars and workshops in varied domains of Computer Science in the august presence of well-known speakers, which gives our students the opportunity to learn about advanced research in the subjects."
-                android:textAppearance="@style/TextAppearance.Pulzion18.About" />
-
-            <TextView
-                android:id="@+id/textView5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Other activities undertaken by the chapter include hosting inter-collegiate events with technical and non-technical competitions, academia-industry initiatives towards the society and various ventures to promote sharing of knowledge and innovation."
+                android:text="At PASC, we all work together as a team. We take utmost efforts for the success of each and every member of PASC. We help them to achieve not only technical superiority, but also bring the best out of them in Non-technical field as well, so that they become the pioneers of the todays world. Since we at PASC bring our motto into reality this year we received the “BEST ACM STUDENT CHAPTER AWARD – 2018”. "
                 android:textAppearance="@style/TextAppearance.Pulzion18.About" />
 
             <TextView
                 android:id="@+id/textView6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:text="Contact No.:"
                 android:textAppearance="@style/TextAppearance.Pulzion18.About" />
 
@@ -76,6 +61,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="0dp"
+                android:layout_marginTop="5dp"
                 android:text="Shreya Narkar: 8055766444"
                 android:textAppearance="@style/TextAppearance.Pulzion18.About"
                 app:layout_constraintBottom_toBottomOf="parent"
