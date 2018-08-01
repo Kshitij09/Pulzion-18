@@ -4,22 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:alpha="0.85"
     android:background="@drawable/back"
     tools:context=".activities.HomeActivity"
-    android:alpha="0.85"
     tools:layout_editor_absoluteY="25dp">
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="136dp"
-        android:layout_marginTop="16dp"
-        android:contentDescription="@string/desc"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/pulzion" />
 
     <android.support.design.button.MaterialButton
         android:id="@+id/button"
@@ -74,11 +62,11 @@
         android:layout_height="233dp"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <ImageButton
         android:id="@+id/imageButton5"
@@ -91,4 +79,19 @@
         android:onClick="website"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageButton4" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="344dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/equinox"
+        android:text="Pulzion' 18"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="56sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>

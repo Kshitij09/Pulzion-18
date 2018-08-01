@@ -13,6 +13,7 @@ import com.bumptech.glide.Glide;
 import com.pict.acm.pulzion18.R;
 import com.pict.acm.pulzion18.model.SponsorSnapshot;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SponsorAdapter extends RecyclerView.Adapter<SponsorAdapter.SponsorHolder> {
@@ -41,6 +42,11 @@ public class SponsorAdapter extends RecyclerView.Adapter<SponsorAdapter.SponsorH
     @Override
     public int getItemCount() {
         return sponsors.size();
+    }
+
+    public void setList(List<SponsorSnapshot> sponsors) {
+        this.sponsors = new ArrayList<>(sponsors);
+        notifyDataSetChanged();
     }
 
     public class SponsorHolder extends RecyclerView.ViewHolder {

@@ -10,5 +10,9 @@ public class Constants {
         public static final String NONTECH = "non-technical";
         public static final String SPONSORS = "sponsors";
         public static final String SLIDES = "slides";
+        public static final String CONFIG = "config";
+        public static final String PREV_SPONSORS = "prev-sponsors";
+        public static final String VISIBLE = "visible";
+        public static final String HIDE = "invisible";
     }
 }
