@@ -1,9 +1,12 @@
 package com.pict.acm.pulzion18.activities;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.bottomappbar.BottomAppBar;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -22,6 +25,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static com.pict.acm.pulzion18.Constants.PULZION.EVENTS;
+import static com.pict.acm.pulzion18.Constants.PULZION.SITE_LINK;
 
 public class EventDetails extends AppCompatActivity {
     ImageView eventLogo;
@@ -37,7 +41,7 @@ public class EventDetails extends AppCompatActivity {
     TextView txt_contact;
     TextView contact;
 
-    //FloatingActionButton registerBtn;
+    FloatingActionButton registerBtn;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference events = database.getReference().child(EVENTS);
 
@@ -67,7 +71,7 @@ public class EventDetails extends AppCompatActivity {
         fees = findViewById(R.id.fees);
         contact = findViewById(R.id.contact);
 
-        //registerBtn = findViewById(R.id.register);
+        registerBtn = findViewById(R.id.register);
 
         EventEntry entry = initializer.eventsMap.get(item.getName());
         Glide.with(this).load(getResources().getDrawable(entry.eventLogo)).into(eventLogo);
@@ -122,12 +126,12 @@ public class EventDetails extends AppCompatActivity {
                 getResources().getDrawable(R.drawable.close_menu));
         bottomAppBar.setNavigationOnClickListener(navIconListener);
         BackdropClickListener listener = new BackdropClickListener(this, navIconListener);
-        /*btnSponsor = findViewById(R.id.btn_sponsors);
-        btnSponsor.setOnClickListener(this);
-        btnAbout = findViewById(R.id.btn_about);
-        btnAbout.setOnClickListener(this);
-        btnEvents = findViewById(R.id.btn_events);
-        btnEvents.setOnClickListener(this);*/
+    }
+
+    public void launchRegisterSite(View v) {
+        Intent web = new Intent(Intent.ACTION_VIEW);
+        web.setData(Uri.parse(SITE_LINK));
+        startActivity(web);
     }
 
     /*@Override

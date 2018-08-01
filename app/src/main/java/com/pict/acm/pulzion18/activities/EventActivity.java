@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.bottomappbar.BottomAppBar;
 import android.support.design.button.MaterialButton;
-import android.support.design.chip.Chip;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -36,8 +35,6 @@ import java.util.ArrayList;
 
 import static com.pict.acm.pulzion18.Constants.PULZION.EVENTS;
 import static com.pict.acm.pulzion18.Constants.PULZION.INDEX;
-import static com.pict.acm.pulzion18.Constants.PULZION.NONTECH;
-import static com.pict.acm.pulzion18.Constants.PULZION.TECHNICAL;
 
 public class EventActivity extends AppCompatActivity implements EventsAdapter.OnItemClickListener {
     public static final String TAG = EventActivity.class.getSimpleName();
@@ -143,50 +140,7 @@ public class EventActivity extends AppCompatActivity implements EventsAdapter.On
         startActivity(detailsActivity, optionsCompat.toBundle());
     }
 
-    public void FilterList(View view) {
-        Chip chip = ((Chip) view);
-        switch (view.getId()) {
-            case R.id.ch_technical:
-                markChip(chip, filterTechnical);
-                filterTechnical = !filterTechnical;
-                break;
-            case R.id.ch_non_technical:
-                markChip(chip, filterNonTechnical);
-                filterNonTechnical = !filterNonTechnical;
-                break;
-        }
-        Log.d(TAG, "FilterList: Tech" + filterTechnical);
-        Log.d(TAG, "FilterList: Non-Tech" + filterNonTechnical);
-        Intent reLaunch = new Intent(EventActivity.this, EventActivity.class);
-        reLaunch.putExtra(TECHNICAL, filterTechnical);
-        reLaunch.putExtra(NONTECH, filterNonTechnical);
-        startActivity(reLaunch);
-    }
+    public void launchWorkshop(View view) {
 
-    private void markChip(Chip chip, Boolean state) {
-        if (state) {
-            chip.setChipBackgroundColorResource(android.R.color.transparent);
-            chip.setChipStrokeColorResource(R.color.colorPrimary);
-            chip.setTextColor(getResources().getColor(R.color.colorPrimary));
-        } else {
-            chip.setChipBackgroundColorResource(R.color.colorPrimary);
-            chip.setChipStrokeColorResource(android.R.color.transparent);
-            chip.setTextColor(getResources().getColor(android.R.color.white));
-        }
     }
-
-    /*@Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.btn_about:
-                startActivity(new Intent(EventActivity.this, AboutUs.class));
-                break;
-            case R.id.btn_events:
-                startActivity(new Intent(EventActivity.this, EventActivity.class));
-                break;
-            case R.id.btn_sponsors:
-                startActivity(new Intent(EventActivity.this, SponsorsActivity.class));
-                break;
-        }
-    }*/
 }

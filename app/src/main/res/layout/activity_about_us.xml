@@ -1,78 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/nested_scroll_view"
+    <LinearLayout
+        android:id="@+id/backdrop"
+        style="@style/Widget.Shrine.Backdrop"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="12dp"
-        android:fillViewport="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent">
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingTop="88dp"
+        android:visibility="invisible">
 
-        <LinearLayout
+        <include layout="@layout/pulzion_backdrop" />
+    </LinearLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/main_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="?actionBarSize">
+
+        <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/imageView3"
+                android:id="@+id/pasc_logo"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                app:layout_constraintBottom_toTopOf="@+id/nested_scroll_view"
+                android:layout_height="256dp"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/pasc"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/pasc" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/info"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="PASC is the most active ACM Chapter in INDIA. PICT being one of the best colleges in Maharashtra for Computer Science, PASC is a highly prestigious chapter."
-                android:textAppearance="@style/TextAppearance.Pulzion18.About" />
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="At PASC, we all work together as a team. We take utmost efforts for the success of each and every member of PASC. We help them to achieve not only technical superiority, but also bring the best out of them in Non-technical field as well, so that they become the pioneers of the todays world. Since we at PASC bring our motto into reality this year we received the “BEST ACM STUDENT CHAPTER AWARD – 2018”. "
-                android:textAppearance="@style/TextAppearance.Pulzion18.About" />
-
-            <TextView
-                android:id="@+id/textView6"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="Contact No.:"
-                android:textAppearance="@style/TextAppearance.Pulzion18.About" />
-
-            <TextView
-                android:id="@+id/textView7"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="0dp"
-                android:layout_marginTop="5dp"
-                android:text="Shreya Narkar: 8055766444"
+                android:layout_below="@id/pasc_logo"
+                android:layout_marginEnd="@dimen/details_padding"
+                android:layout_marginStart="@dimen/details_padding"
+                android:layout_marginTop="24dp"
+                android:autoLink="all"
+                android:text="@string/about_1"
                 android:textAppearance="@style/TextAppearance.Pulzion18.About"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <TextView
-                android:id="@+id/textView8"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Pratik Patil: 7066510224"
-                android:textAppearance="@style/TextAppearance.Pulzion18.About" />
-        </LinearLayout>
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/pasc_logo" />
+        </android.support.constraint.ConstraintLayout>
     </android.support.v4.widget.NestedScrollView>
+
+    <android.support.design.bottomappbar.BottomAppBar
+        android:id="@+id/bar"
+        style="@style/Widget.MaterialComponents.BottomAppBar.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:layout_gravity="bottom"
+        android:backgroundTint="@color/colorPrimary"
+        android:elevation="8dp"
+        app:fabAttached="false"
+        app:navigationIcon="@drawable/ic_menu" />
 </android.support.design.widget.CoordinatorLayout>

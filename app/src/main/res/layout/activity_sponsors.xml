@@ -1,44 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.SponsorsActivity"
-    tools:layout_editor_absoluteY="25dp">
+    tools:context=".activities.SponsorsActivity">
 
-    <TextView
-        android:id="@+id/txt_previous_sponsors"
-        android:layout_width="344dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:fontFamily="@font/philosopher"
-        android:text="@string/previous_sponsors"
-        android:textAlignment="center"
-        android:textSize="32sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:id="@+id/backdrop"
+        style="@style/Widget.Shrine.Backdrop"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingTop="88dp"
+        android:visibility="invisible">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_sponsors"
-        android:layout_width="344dp"
-        android:layout_height="520dp"
-        android:layout_marginTop="8dp"
-        app:layoutManager="android.support.v7.widget.LinearLayoutManager"
-        app:layout_constraintTop_toBottomOf="@+id/txt_previous_sponsors"
-        tools:layout_editor_absoluteX="8dp" />
+        <include layout="@layout/pulzion_backdrop" />
+    </LinearLayout>
 
-    <com.wang.avi.AVLoadingIndicatorView
-        android:id="@+id/indicator"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:indicatorColor="@color/colorAccent"
-        app:indicatorName="BallScaleRippleMultipleIndicator"
-        app:layout_constraintBottom_toTopOf="@+id/recycler_sponsors"
-        app:layout_constraintEnd_toStartOf="@+id/recycler_sponsors"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/recycler_sponsors"
-        app:layout_constraintTop_toBottomOf="@+id/recycler_sponsors" />
-</android.support.constraint.ConstraintLayout>
+    <RelativeLayout
+        android:id="@+id/main_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="?actionBarSize">
+
+        <TextView
+            android:id="@+id/txt_previous_sponsors"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/equinox"
+            android:text="@string/previous_sponsors"
+            android:textAlignment="center"
+            android:textColor="@color/french_blue"
+            android:textSize="32sp" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_sponsors"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/txt_previous_sponsors"
+            android:layout_marginTop="16dp"
+            app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
+
+        <com.wang.avi.AVLoadingIndicatorView
+            android:id="@+id/indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            app:indicatorColor="@color/colorAccent"
+            app:indicatorName="BallScaleRippleMultipleIndicator" />
+    </RelativeLayout>
+
+    <android.support.design.bottomappbar.BottomAppBar
+        android:id="@+id/bar"
+        style="@style/Widget.MaterialComponents.BottomAppBar.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:layout_gravity="bottom"
+        android:backgroundTint="@color/colorPrimary"
+        android:elevation="8dp"
+        app:fabAttached="false"
+        app:navigationIcon="@drawable/ic_menu" />
+</android.support.design.widget.CoordinatorLayout>

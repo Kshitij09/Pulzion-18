@@ -102,7 +102,6 @@
                 android:id="@+id/description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
                 android:layout_marginTop="8dp"
                 android:text="TextView"
                 android:textSize="16sp"
@@ -176,7 +175,14 @@
         android:layout_gravity="bottom"
         android:backgroundTint="@color/colorPrimary"
         android:elevation="8dp"
-        app:fabAlignmentMode="end"
-        app:fabAttached="false"
+        app:fabAlignmentMode="center"
         app:navigationIcon="@drawable/ic_menu" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="launchRegisterSite"
+        android:src="@drawable/ic_register"
+        app:layout_anchor="@id/bar" />
 </android.support.design.widget.CoordinatorLayout>

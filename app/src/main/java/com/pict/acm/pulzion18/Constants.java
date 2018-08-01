@@ -14,5 +14,7 @@ public class Constants {
         public static final String PREV_SPONSORS = "prev-sponsors";
         public static final String VISIBLE = "visible";
         public static final String HIDE = "invisible";
+        public static final String SITE_LINK = "https://www.meraevents.com/event/pulzion-18";
+        public static final String ABOUT = "about";
     }
 }

@@ -3,6 +3,7 @@ package com.pict.acm.pulzion18;
 import android.app.Activity;
 import android.content.Intent;
 import android.support.design.button.MaterialButton;
+import android.util.Log;
 import android.view.View;
 
 import com.pict.acm.pulzion18.activities.AboutUs;
@@ -51,7 +52,10 @@ public class BackdropClickListener implements View.OnClickListener {
                 break;
         }
         navIconListener.toggleBackdrop(navIconListener.lastView);
-        if (!activity.getLocalClassName().equals("activities.EventActivity"))
+
+        if (!activity.getLocalClassName().equals("activities.EventActivity") || !activity.getLocalClassName().equals("activities.HomeActivity")) {
+            Log.d("LISTENER", "onClick: " + activity.getLocalClassName());
             activity.finish();
+        }
     }
 }

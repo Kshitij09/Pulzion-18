@@ -2,9 +2,11 @@ package com.pict.acm.pulzion18.activities;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.bottomappbar.BottomAppBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -12,6 +14,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.pict.acm.pulzion18.BackdropClickListener;
+import com.pict.acm.pulzion18.NavigationIconClickListener;
 import com.pict.acm.pulzion18.R;
 import com.pict.acm.pulzion18.adapters.SponsorAdapter;
 import com.pict.acm.pulzion18.model.SponsorSnapshot;
@@ -46,9 +50,10 @@ public class SponsorsActivity extends AppCompatActivity {
         prevTitle = findViewById(R.id.txt_previous_sponsors);
         sponsors = new ArrayList<>();
 
+        setupNavigationbar();
         sponsorRef.keepSynced(true);
         recyclerSponsors.setHasFixedSize(true);
-        adapter = new SponsorAdapter(sponsors);
+        adapter = new SponsorAdapter(this, sponsors);
         recyclerSponsors.setAdapter(adapter);
         sponsorRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -84,5 +89,18 @@ public class SponsorsActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void setupNavigationbar() {
+        BottomAppBar bottomAppBar = findViewById(R.id.bar);
+        NavigationIconClickListener navIconListener = new NavigationIconClickListener(
+                SponsorsActivity.this,
+                findViewById(R.id.main_view),
+                findViewById(R.id.backdrop),
+                new AccelerateDecelerateInterpolator(),
+                getResources().getDrawable(R.drawable.ic_menu),
+                getResources().getDrawable(R.drawable.close_menu));
+        bottomAppBar.setNavigationOnClickListener(navIconListener);
+        BackdropClickListener listener = new BackdropClickListener(this, navIconListener);
     }
 }
