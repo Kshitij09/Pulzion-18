@@ -84,6 +84,7 @@ public class WorkshopDetails extends AppCompatActivity {
 
     private void initDetails(final String name) {
         int color = 0;
+        workshopRef.keepSynced(true);
         Query query = null;
         switch (name) {
             case ETHICAL:
