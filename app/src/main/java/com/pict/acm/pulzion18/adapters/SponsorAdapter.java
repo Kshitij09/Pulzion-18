@@ -41,7 +41,7 @@ public class SponsorAdapter extends RecyclerView.Adapter<SponsorAdapter.SponsorH
         Uri uri = Uri.parse(snapshot.getImageUrl());
         Glide.with(holder.itemView.getContext()).load(uri).into(holder.sponsorLogo);
         holder.sponsorLogo.setImageURI(uri);
-        holder.sponsorType.setText(snapshot.getSponsorType());
+        holder.sponsorType.setText(snapshot.getSponserType());
         holder.bind(snapshot.getWebsite());
     }
 

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_margin="8dp"
-    android:background="#010019"
+    android:background="@drawable/card_edge"
     android:layout_height="wrap_content">
 
     <ImageView
@@ -46,11 +46,12 @@
 
     <TextView
         android:id="@+id/sponsor_type"
-        android:layout_width="344dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/equinox"
-        android:text="TextView"
+        android:text="SPONSOR"
+        android:textColor="@color/colorAccent"
         android:textAlignment="center"
         android:textSize="32sp"
         app:layout_constraintEnd_toEndOf="parent"

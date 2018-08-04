@@ -15,6 +15,11 @@ public class Constants {
         public static final String VISIBLE = "visible";
         public static final String HIDE = "invisible";
         public static final String SITE_LINK = "https://www.meraevents.com/event/pulzion-18";
+        public static final String ETHICAL_REG = "https://www.meraevents.com/ticketWidget?eventId=173673&ucode=organizer&wcode=9063CD-9063CD-333333-9063CD-&theme=1";
+        public static final String IOT_REG = "https://www.meraevents.com/ticketWidget?eventId=173672&ucode=organizer&wcode=9063CD-9063CD-333333-9063CD-&theme=1";
         public static final String ABOUT = "about";
+        public static final String ETHICAL = "ethical";
+        public static final String IOT = "iot";
+        public static final String WORKSHOPS = "workshops";
     }
 }

@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.bottomappbar.BottomAppBar;
-import android.support.design.button.MaterialButton;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -16,7 +16,6 @@ import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.ImageView;
 
-import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -43,12 +42,8 @@ public class EventActivity extends AppCompatActivity implements EventsAdapter.On
     DatabaseReference rootRef = database.getReference();
     EventsAdapter adapter;
     AVLoadingIndicatorView indicator;
-    Boolean filterTechnical, filterNonTechnical;
-    FirebaseRecyclerOptions<EventSnapshot> options;
-    MaterialButton btnSponsor;
-    MaterialButton btnAbout;
-    MaterialButton btnEvents;
     ArrayList<EventSnapshot> events;
+    FloatingActionButton workshopBtn;
 
 
     @Override
@@ -59,6 +54,13 @@ public class EventActivity extends AppCompatActivity implements EventsAdapter.On
 
         eventsRecycler = findViewById(R.id.event_list);
         indicator = findViewById(R.id.indicator);
+        workshopBtn = findViewById(R.id.workshop);
+        workshopBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(EventActivity.this, WorkshopActivity.class));
+            }
+        });
         eventsRecycler.setHasFixedSize(true);
 
         indicator.show();
@@ -141,6 +143,6 @@ public class EventActivity extends AppCompatActivity implements EventsAdapter.On
     }
 
     public void launchWorkshop(View view) {
-
+        //TODO: CREATE WORKSHOPS ACTIVITY
     }
 }

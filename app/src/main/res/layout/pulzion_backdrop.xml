@@ -2,13 +2,6 @@
 <merge xmlns:android="http://schemas.android.com/apk/res/android">
 
     <android.support.design.button.MaterialButton
-        android:id="@+id/btn_about"
-        style="@style/Widget.Shrine.Button.TextButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/about_us" />
-
-    <android.support.design.button.MaterialButton
         android:id="@+id/btn_sponsors"
         style="@style/Widget.Shrine.Button.TextButton"
         android:layout_width="wrap_content"
@@ -23,18 +16,23 @@
         android:text="@string/events" />
 
     <android.support.design.button.MaterialButton
-        android:id="@+id/btn_login"
+        android:id="@+id/btn_workshops"
         style="@style/Widget.Shrine.Button.TextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/login_signup"
-        android:visibility="invisible" />
+        android:text="@string/workshops" />
 
     <View
         android:id="@+id/line_login"
         android:layout_width="56dp"
         android:layout_height="1dp"
         android:layout_margin="16dp"
-        android:background="?android:attr/textColorPrimary"
-        android:visibility="gone" />
+        android:background="?android:attr/textColorPrimary" />
+
+    <android.support.design.button.MaterialButton
+        android:id="@+id/btn_about"
+        style="@style/Widget.Shrine.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/about_us" />
 </merge>

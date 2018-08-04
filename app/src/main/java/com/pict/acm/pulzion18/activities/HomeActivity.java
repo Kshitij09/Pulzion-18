@@ -37,7 +37,10 @@ public class HomeActivity extends AppCompatActivity {
         Query slidesRef = rootRef.child(SLIDES).orderByKey();
         viewPager = findViewById(R.id.viewPager);
         viewPager.setVisibility(View.INVISIBLE);
+
         images = new ArrayList<>();
+
+
         slidesRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -75,16 +78,22 @@ public class HomeActivity extends AppCompatActivity {
             HomeActivity.this.runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    if (HomeActivity.this.viewPager.getCurrentItem() == 0) {
-                        HomeActivity.this.viewPager.setCurrentItem(1);
-                    } else if (HomeActivity.this.viewPager.getCurrentItem() == 1) {
-                        HomeActivity.this.viewPager.setCurrentItem(2);
-                    } else if (HomeActivity.this.viewPager.getCurrentItem() == 2) {
-                        HomeActivity.this.viewPager.setCurrentItem(3);
-                    } else if (HomeActivity.this.viewPager.getCurrentItem() == 3) {
-                        HomeActivity.this.viewPager.setCurrentItem(4);
-                    } else {
-                        HomeActivity.this.viewPager.setCurrentItem(0);
+                    switch (HomeActivity.this.viewPager.getCurrentItem()) {
+                        case 0:
+                            HomeActivity.this.viewPager.setCurrentItem(1);
+                            break;
+                        case 1:
+                            HomeActivity.this.viewPager.setCurrentItem(2);
+                            break;
+                        case 2:
+                            HomeActivity.this.viewPager.setCurrentItem(3);
+                            break;
+                        case 3:
+                            HomeActivity.this.viewPager.setCurrentItem(4);
+                            break;
+                        default:
+                            HomeActivity.this.viewPager.setCurrentItem(0);
+                            break;
                     }
 
                 }
@@ -94,7 +103,6 @@ public class HomeActivity extends AppCompatActivity {
     public void Explore(View view){
         Intent i = new Intent(HomeActivity.this,EventActivity.class);
         startActivity(i);
-        finish();
     }
 
     public void facebook(View view) {

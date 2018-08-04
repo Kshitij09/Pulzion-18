@@ -134,18 +134,4 @@ public class EventDetails extends AppCompatActivity {
         startActivity(web);
     }
 
-    /*@Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.btn_about:
-                startActivity(new Intent(EventDetails.this, AboutUs.class));
-                break;
-            case R.id.btn_events:
-                startActivity(new Intent(EventDetails.this, EventActivity.class));
-                break;
-            case R.id.btn_sponsors:
-                startActivity(new Intent(EventDetails.this, SponsorsActivity.class));
-                break;
-        }
-    }*/
 }

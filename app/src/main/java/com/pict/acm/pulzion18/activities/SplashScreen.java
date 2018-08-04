@@ -1,14 +1,13 @@
 package com.pict.acm.pulzion18.activities;
 
 import android.content.Intent;
-import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.constraint.ConstraintLayout;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 
 import com.pict.acm.pulzion18.R;
-
-import static com.pict.acm.pulzion18.R.layout.activity_splash_screen;
 
 public class SplashScreen extends AppCompatActivity {
 
@@ -16,13 +15,19 @@ public class SplashScreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(activity_splash_screen);
+        setContentView(R.layout.activity_splash_screen);
+
+
+        final ImageView rimage = findViewById(R.id.rocketImage);
+        ConstraintLayout layout = findViewById(R.id.layout);
+        layout.animate().translationY(200).setDuration(1500);
+        rimage.animate().translationY(-600).setDuration(1500);
 
         ImageView pimage = findViewById(R.id.pulzionImage);
+
         pimage.animate().alpha(1f).setDuration(2000);
 
-        ImageView rimage = findViewById(R.id.rocketImage);
-        rimage.animate().translationY(-600).setDuration(1500);
+
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {

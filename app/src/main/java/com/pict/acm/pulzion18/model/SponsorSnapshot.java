@@ -4,18 +4,8 @@ public class SponsorSnapshot {
     private String name;
     private String imageUrl;
     private String website;
-    private String sponsorType;
-
-    public SponsorSnapshot() {
-
-    }
-
-    public SponsorSnapshot(String name, String imageUrl, String website, String sponsorType) {
-        this.name = name;
-        this.imageUrl = imageUrl;
-        this.website = website;
-        this.sponsorType = sponsorType;
-    }
+    private String sponserType;
+    private long index;
 
     public String getName() {
         return name;
@@ -41,11 +31,32 @@ public class SponsorSnapshot {
         this.website = website;
     }
 
-    public String getSponsorType() {
-        return sponsorType;
+    public SponsorSnapshot(String name, String imageUrl, String website, String sponserType, long index) {
+
+        this.name = name;
+        this.imageUrl = imageUrl;
+        this.website = website;
+        this.sponserType = sponserType;
+        this.index = index;
     }
 
-    public void setSponsorType(String sponsorType) {
-        this.sponsorType = sponsorType;
+    public SponsorSnapshot() {
+
+    }
+
+    public String getSponserType() {
+        return sponserType;
+    }
+
+    public void setSponserType(String sponserType) {
+        this.sponserType = sponserType;
+    }
+
+    public long getIndex() {
+        return index;
+    }
+
+    public void setIndex(long index) {
+        this.index = index;
     }
 }

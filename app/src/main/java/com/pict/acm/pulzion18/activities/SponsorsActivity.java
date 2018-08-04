@@ -13,6 +13,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.pict.acm.pulzion18.BackdropClickListener;
 import com.pict.acm.pulzion18.NavigationIconClickListener;
@@ -25,6 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.pict.acm.pulzion18.Constants.PULZION.CONFIG;
+import static com.pict.acm.pulzion18.Constants.PULZION.INDEX;
 import static com.pict.acm.pulzion18.Constants.PULZION.PREV_SPONSORS;
 import static com.pict.acm.pulzion18.Constants.PULZION.SPONSORS;
 import static com.pict.acm.pulzion18.Constants.PULZION.VISIBLE;
@@ -55,7 +57,8 @@ public class SponsorsActivity extends AppCompatActivity {
         recyclerSponsors.setHasFixedSize(true);
         adapter = new SponsorAdapter(this, sponsors);
         recyclerSponsors.setAdapter(adapter);
-        sponsorRef.addValueEventListener(new ValueEventListener() {
+        Query sponsorQuery = sponsorRef.orderByChild(INDEX);
+        sponsorQuery.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 sponsors = new ArrayList<>();
