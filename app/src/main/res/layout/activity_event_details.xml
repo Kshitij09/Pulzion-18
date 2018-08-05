@@ -18,6 +18,16 @@
         <include layout="@layout/pulzion_backdrop" />
     </LinearLayout>
 
+    <com.wang.avi.AVLoadingIndicatorView
+        android:id="@+id/indicator"
+        style="@style/AVLoadingIndicatorView.Large"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="visible"
+        app:indicatorColor="@color/colorAccent"
+        app:indicatorName="BallScaleRippleMultipleIndicator" />
+
     <android.support.v4.widget.NestedScrollView
         android:id="@+id/detail_view"
         android:layout_width="match_parent"
@@ -174,14 +184,18 @@
         android:layout_gravity="bottom"
         android:backgroundTint="@color/colorPrimary"
         android:elevation="8dp"
-        app:fabAlignmentMode="end"
+        app:fabAttached="false"
         app:navigationIcon="@drawable/ic_menu" />
 
-    <android.support.design.widget.FloatingActionButton
+    <ru.dimorinny.floatingtextbutton.FloatingTextButton
         android:id="@+id/register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="launchRegisterSite"
-        android:src="@drawable/ic_register"
-        app:layout_anchor="@id/bar" />
+        android:elevation="8dp"
+        app:floating_background_color="@color/colorAccent"
+        app:floating_left_icon="@drawable/ic_register"
+        app:floating_title="Register Now"
+        app:floating_title_color="@android:color/white"
+        app:layout_anchor="@id/bar"
+        app:layout_anchorGravity="center_horizontal" />
 </android.support.design.widget.CoordinatorLayout>

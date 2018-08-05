@@ -40,7 +40,7 @@
         android:padding="@dimen/grid_item_spacing"
         android:scrollbarStyle="insideOverlay"
         android:scrollbars="vertical"
-        android:layout_marginBottom="56dp"
+        android:layout_marginBottom="?actionBarSize"
         android:visibility="invisible"
         app:layoutManager="android.support.v7.widget.GridLayoutManager"
         app:spanCount="3" />
@@ -53,15 +53,6 @@
         android:layout_gravity="bottom"
         android:backgroundTint="@color/colorPrimary"
         android:elevation="8dp"
-        app:fabAlignmentMode="end"
+        app:fabAttached="false"
         app:navigationIcon="@drawable/ic_menu" />
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/workshop"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:elevation="8dp"
-        android:onClick="launchWorkshop"
-        android:src="@drawable/ic_workshop"
-        app:layout_anchor="@id/bar" />
 </android.support.design.widget.CoordinatorLayout>

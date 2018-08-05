@@ -4,12 +4,13 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.bottomappbar.BottomAppBar;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.firebase.database.DatabaseReference;
@@ -20,14 +21,18 @@ import com.pict.acm.pulzion18.NavigationIconClickListener;
 import com.pict.acm.pulzion18.R;
 import com.pict.acm.pulzion18.model.EventEntry;
 import com.pict.acm.pulzion18.model.EventSnapshot;
+import com.wang.avi.AVLoadingIndicatorView;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import ru.dimorinny.floatingtextbutton.FloatingTextButton;
 
 import static com.pict.acm.pulzion18.Constants.PULZION.EVENTS;
 import static com.pict.acm.pulzion18.Constants.PULZION.SITE_LINK;
 
 public class EventDetails extends AppCompatActivity {
+    private static final String TAG = EventDetails.class.getSimpleName();
     ImageView eventLogo;
     TextView eventTitle;
     TextView tagline;
@@ -41,9 +46,10 @@ public class EventDetails extends AppCompatActivity {
     TextView txt_contact;
     TextView contact;
 
-    FloatingActionButton registerBtn;
+    FloatingTextButton registerBtn;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference events = database.getReference().child(EVENTS);
+    AVLoadingIndicatorView indicatorView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +64,7 @@ public class EventDetails extends AppCompatActivity {
     }
 
     private void initDetails(ListInitializer initializer, EventSnapshot item) {
+        indicatorView = findViewById(R.id.indicator);
         eventLogo = findViewById(R.id.event_logo);
         eventTitle = findViewById(R.id.event_title);
         tagline = findViewById(R.id.tagline);
@@ -72,6 +79,19 @@ public class EventDetails extends AppCompatActivity {
         contact = findViewById(R.id.contact);
 
         registerBtn = findViewById(R.id.register);
+        registerBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d(TAG, "launchRegisterSite: ");
+                Toast.makeText(EventDetails.this, "Navigating you to registration site!", Toast.LENGTH_SHORT).show();
+                indicatorView.show();
+                Intent web = new Intent(Intent.ACTION_VIEW);
+                web.addCategory("android.intent.category.BROWSABLE");
+                web.setData(Uri.parse(SITE_LINK));
+                startActivity(web);
+                indicatorView.hide();
+            }
+        });
 
         EventEntry entry = initializer.eventsMap.get(item.getName());
         Glide.with(this).load(getResources().getDrawable(entry.eventLogo)).into(eventLogo);
@@ -113,6 +133,7 @@ public class EventDetails extends AppCompatActivity {
         for (Map.Entry<String, Long> pair : contacts.entrySet()) {
             contact.append(pair.getKey() + ": " + pair.getValue() + " \n");
         }
+        indicatorView.hide();
     }
 
     private void setupNavigationbar() {
@@ -129,9 +150,14 @@ public class EventDetails extends AppCompatActivity {
     }
 
     public void launchRegisterSite(View v) {
+        Log.d(TAG, "launchRegisterSite: ");
+        Toast.makeText(this, "Navigating you to registration site!", Toast.LENGTH_SHORT).show();
+        indicatorView.show();
         Intent web = new Intent(Intent.ACTION_VIEW);
+        web.addCategory("android.intent.category.BROWSABLE");
         web.setData(Uri.parse(SITE_LINK));
         startActivity(web);
+        indicatorView.hide();
     }
 
 }

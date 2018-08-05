@@ -17,6 +17,16 @@
         <include layout="@layout/pulzion_backdrop" />
     </LinearLayout>
 
+    <com.wang.avi.AVLoadingIndicatorView
+        android:id="@+id/indicator"
+        style="@style/AVLoadingIndicatorView.Large"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="visible"
+        app:indicatorColor="@color/colorAccent"
+        app:indicatorName="BallScaleRippleMultipleIndicator" />
+
     <android.support.v4.widget.NestedScrollView
         android:id="@+id/main_view"
         android:layout_width="match_parent"
@@ -64,6 +74,15 @@
         android:layout_gravity="bottom"
         android:backgroundTint="@color/colorPrimary"
         android:elevation="8dp"
-        app:fabAttached="false"
+        app:fabAlignmentMode="end"
         app:navigationIcon="@drawable/ic_menu" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/link_website"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="launchWebsite"
+        android:src="@drawable/ic_web_handle"
+        app:layout_anchor="@id/bar"
+        app:rippleColor="@color/french_blue" />
 </android.support.design.widget.CoordinatorLayout>

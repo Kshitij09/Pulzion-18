@@ -5,12 +5,12 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.bottomappbar.BottomAppBar;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.firebase.database.DataSnapshot;
@@ -23,6 +23,9 @@ import com.pict.acm.pulzion18.BackdropClickListener;
 import com.pict.acm.pulzion18.NavigationIconClickListener;
 import com.pict.acm.pulzion18.R;
 import com.pict.acm.pulzion18.model.WorkshopSnapshot;
+import com.wang.avi.AVLoadingIndicatorView;
+
+import ru.dimorinny.floatingtextbutton.FloatingTextButton;
 
 import static com.pict.acm.pulzion18.Constants.PULZION.ETHICAL;
 import static com.pict.acm.pulzion18.Constants.PULZION.ETHICAL_REG;
@@ -43,13 +46,16 @@ public class WorkshopDetails extends AppCompatActivity {
     TextView txtFees;
     TextView txtDate;
     TextView txtName;
-    FloatingActionButton btnReg;
+    FloatingTextButton btnReg;
+    AVLoadingIndicatorView indicatorView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workshop_details);
 
+
+        indicatorView = findViewById(R.id.indicator);
         workshopLogo = findViewById(R.id.event_logo);
         txtName = findViewById(R.id.event_title);
         btnReg = findViewById(R.id.register);
@@ -71,12 +77,16 @@ public class WorkshopDetails extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent web = new Intent(Intent.ACTION_VIEW);
+                Toast.makeText(WorkshopDetails.this, "Navigating you to registration site!", Toast.LENGTH_SHORT).show();
+                indicatorView.show();
                 if (name.equals(ETHICAL)) {
                     web.setData(Uri.parse(ETHICAL_REG));
                 } else {
                     web.setData(Uri.parse(IOT_REG));
                 }
+                web.addCategory("android.intent.category.BROWSABLE");
                 startActivity(web);
+                indicatorView.hide();
             }
         });
 
@@ -120,6 +130,7 @@ public class WorkshopDetails extends AppCompatActivity {
 
             }
         });
+        indicatorView.hide();
     }
 
     private void setupNavigationbar() {
